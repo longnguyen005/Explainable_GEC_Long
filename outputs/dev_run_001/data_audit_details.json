@@ -1,0 +1,49 @@
+[
+  {
+    "split": "train",
+    "original_records": 15187,
+    "records": 14610,
+    "tokens": 416571,
+    "SVA": 1005,
+    "VFORM": 1190,
+    "NNUM": 1668,
+    "unique_sources": 14479,
+    "excluded_records": 577,
+    "input_sha256": "3940854d996daa4abe1fdc90bc1fecff456655f687dedfcddc7d70c65e064d5a",
+    "token_hash": "12e7e0bcc5f99e99a6be931f32ee7a72c72d08f234e207eb2d836800277a0cca",
+    "excluded_by_kind": {
+      "insertion": 211,
+      "multi_token_replacement": 281,
+      "deletion": 85
+    },
+    "legacy_retention_changes": [
+      "train:001210",
+      "train:001516",
+      "train:001633",
+      "train:001946",
+      "train:008000",
+      "train:008762",
+      "train:012667",
+      "train:013924"
+    ]
+  },
+  {
+    "split": "dev",
+    "original_records": 2413,
+    "records": 2367,
+    "tokens": 68382,
+    "SVA": 74,
+    "VFORM": 69,
+    "NNUM": 120,
+    "unique_sources": 2367,
+    "excluded_records": 46,
+    "input_sha256": "98674e5f9cd731925f448aec5a2c7c60f7824daa18139de3be6d8b394717a752",
+    "token_hash": "18887e6b1e83217cf0b47a19af1e7bbd777ce8069accf1f924e61429684aefc8",
+    "excluded_by_kind": {
+      "insertion": 8,
+      "multi_token_replacement": 34,
+      "deletion": 4
+    },
+    "legacy_retention_changes": []
+  }
+]

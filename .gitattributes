@@ -1,0 +1,6 @@
+# Preserve exact bytes: the frozen DEV manifest checks code and artifact SHA-256.
+# Newline conversion on clone would invalidate those checksums.
+* -text
+*.joblib binary
+*.png binary
+*.zip binary

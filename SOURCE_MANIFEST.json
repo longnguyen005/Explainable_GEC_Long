@@ -1,0 +1,19 @@
+{
+  "source_directory": "D:\\MLA\\Explainable_GEC 2\\Explainable_GEC 2",
+  "snapshots": {
+    "legacy_source\\audit_counts.py": "993c6d9ae3f3a1a1ba95555df1834523f573160d864a95d595dc3d4da07adcb1",
+    "legacy_source\\baseline.py": "df7f7043baabd1d128fefcf5d63ccc3a7bc5d4fbdbc8a7814ae65d2428a3a37c",
+    "legacy_source\\baseline_ml.py": "638ce3c2c8f3f17dc0d8c33254e1a993c946617f2b7322f640bee98ec5a7293f",
+    "legacy_source\\phan_bo.py": "48b9f8250ac0fd8b64d0e30f558f7377c1fde44d5c415a53ea42dafbcd29584e",
+    "legacy_source\\read_jsonl.py": "7444c85a3d15e9eac1d74c4cbd931d1b866c82b1161c4ef5149ce2f32ae96dc8",
+    "legacy_source\\README.md": "b6241d0a2ce7812e6fcffc811fd367121ed35c3cd69c56ef4326b1c556acfee0",
+    "legacy_source\\requirement.txt": "ef68fd9a3eecde89b1ecdccdecbc5f2ae4ca48f5d1e7662b95bfe9001d37209e",
+    "legacy_source\\tune_ml.py": "66300b71e2fab3730efa161e64cb5609f5c69e66e0d5a2cad45b7467f234dd0f"
+  },
+  "data_copied": [
+    "train",
+    "dev"
+  ],
+  "test_copied": false,
+  "extraction": "AST get_source_segment; original scripts not executed"
+}

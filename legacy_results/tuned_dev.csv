@@ -1,0 +1,9 @@
+HeThong,Nhan,SoGold,P,R,F0.5
+LogReg (da chinh),SVA,74,0.326,0.189,0.285
+LogReg (da chinh),VFORM,69,0.208,0.072,0.152
+LogReg (da chinh),NNUM,120,0.256,0.175,0.234
+LogReg (da chinh),MICRO 3 loai,263,0.268,0.152,0.233
+k-NN (da chinh),SVA,74,0.133,0.027,0.075
+k-NN (da chinh),VFORM,69,0.0,0.0,0.0
+k-NN (da chinh),NNUM,120,0.133,0.05,0.1
+k-NN (da chinh),MICRO 3 loai,263,0.118,0.03,0.075

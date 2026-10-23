@@ -1,0 +1,6 @@
+{
+  "FP_untyped": 63,
+  "FN_untyped": 233,
+  "human_labels_completed": false,
+  "instruction": "Both reviewers annotate the same entire FP list independently. Do not copy AI judgments."
+}

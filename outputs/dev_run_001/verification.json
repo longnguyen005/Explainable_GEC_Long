@@ -1,0 +1,59 @@
+{
+  "verified_at": "2026-10-22T20:52:50+07:00",
+  "status": "passed",
+  "test_opened": false,
+  "test_scored": false,
+  "training_performed_by_verifier": false,
+  "metric_reconciliations": [
+    {
+      "system": "All_O",
+      "prediction_rows": 68382,
+      "independent_counts_match": true
+    },
+    {
+      "system": "POS",
+      "prediction_rows": 68382,
+      "independent_counts_match": true
+    },
+    {
+      "system": "LR_base",
+      "prediction_rows": 68382,
+      "independent_counts_match": true
+    },
+    {
+      "system": "LR_reference_C3_tau065",
+      "prediction_rows": 68382,
+      "independent_counts_match": true
+    },
+    {
+      "system": "LR_parser",
+      "prediction_rows": 68382,
+      "independent_counts_match": true
+    },
+    {
+      "system": "kNN",
+      "prediction_rows": 68382,
+      "independent_counts_match": true
+    }
+  ],
+  "lr_roundtrips": [
+    {
+      "model": "LR_base",
+      "full_dev_predictions_identical_after_reload": true
+    },
+    {
+      "model": "LR_parser",
+      "full_dev_predictions_identical_after_reload": true
+    },
+    {
+      "model": "LR_reference",
+      "full_dev_predictions_identical_after_reload": true
+    }
+  ],
+  "knn_reload_probe_rows": 128,
+  "knn_reload_predictions_identical": true,
+  "parser_alignment_all_tokens": true,
+  "grid_rows": 228,
+  "reference_FP_count": 63,
+  "human_review_labels_not_fabricated": true
+}

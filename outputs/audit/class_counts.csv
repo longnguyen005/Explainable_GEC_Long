@@ -1,0 +1,13 @@
+﻿split,stage,mapped_type,annotated_edit_records,visible_source_error_position_occurrences,source_gap_occurrences,strict_one_to_one_records,unique_source_texts_with_type
+train,before_filter,SVA,1016,1021,0,1005,1006
+train,before_filter,VFORM,1696,1601,210,1190,1693
+train,before_filter,NNUM,1728,1763,1,1668,1720
+train,after_filter,SVA,1005,1005,0,1005,995
+train,after_filter,VFORM,1190,1190,0,1190,1188
+train,after_filter,NNUM,1668,1668,0,1668,1660
+dev,before_filter,SVA,76,76,0,74,76
+dev,before_filter,VFORM,108,114,8,69,108
+dev,before_filter,NNUM,125,125,0,120,125
+dev,after_filter,SVA,74,74,0,74,74
+dev,after_filter,VFORM,69,69,0,69,69
+dev,after_filter,NNUM,120,120,0,120,120

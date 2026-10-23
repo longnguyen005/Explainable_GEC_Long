@@ -1,0 +1,38 @@
+{
+  "train_records": 14610,
+  "dev_records": 2367,
+  "train_tokens": 416571,
+  "dev_tokens": 68382,
+  "changed_tokens": 0,
+  "checked_every_token": true,
+  "metadata": [
+    {
+      "spacy": "3.8.14",
+      "model": "en_core_web_sm",
+      "model_version": "3.8.0",
+      "tokens": "12e7e0bcc5f99e99a6be931f32ee7a72c72d08f234e207eb2d836800277a0cca",
+      "algorithm": "v1: direct subject; auxiliary inherits lexical head subject; exact signed distance",
+      "pipeline": [
+        "tok2vec",
+        "tagger",
+        "parser",
+        "attribute_ruler"
+      ],
+      "tokenization": "Doc(words=EXPECT tokens, spaces=True except final token)"
+    },
+    {
+      "spacy": "3.8.14",
+      "model": "en_core_web_sm",
+      "model_version": "3.8.0",
+      "tokens": "18887e6b1e83217cf0b47a19af1e7bbd777ce8069accf1f924e61429684aefc8",
+      "algorithm": "v1: direct subject; auxiliary inherits lexical head subject; exact signed distance",
+      "pipeline": [
+        "tok2vec",
+        "tagger",
+        "parser",
+        "attribute_ruler"
+      ],
+      "tokenization": "Doc(words=EXPECT tokens, spaces=True except final token)"
+    }
+  ]
+}

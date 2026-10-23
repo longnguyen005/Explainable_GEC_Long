@@ -1,0 +1,391 @@
+{
+  "started_at": "2026-10-22T20:52:09+07:00",
+  "config": {
+    "data_dir": "data/json",
+    "output_dir": "outputs/dev_run_001",
+    "cache_dir": "cache",
+    "model_dir": "models",
+    "seed": 0,
+    "threads": 4,
+    "min_count": 3,
+    "C_grid": [
+      0.1,
+      0.3,
+      1.0,
+      3.0
+    ],
+    "tau_grid": [
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.95
+    ],
+    "lr_max_iter": 1000,
+    "lr_tol": 0.0001,
+    "near_tie_C_margin": 0.005,
+    "reference_C": 3.0,
+    "reference_tau": 0.65,
+    "svd_components": 200,
+    "knn_O_per_error": 10,
+    "k_grid": [
+      5,
+      10,
+      20,
+      50
+    ],
+    "knn_batch_size": 512,
+    "parser_model": "en_core_web_sm",
+    "parser_batch_size": 64,
+    "variants": [
+      "base",
+      "parser"
+    ],
+    "run_knn": true,
+    "selection_protocol": "Within each C maximize typed micro F0.5; exact ties prefer higher precision, then higher tau. Across C, choose the smallest C with score less than 0.005 below the global maximum. kNN maximizes F0.5; exact ties prefer higher precision, then smaller k, then higher tau. Both LR variants use the same rule."
+  },
+  "config_sha256": "f7a07bf96626de63dec5f597f2fe7578cbe4b9924e0470fef7795a27447d37e2",
+  "stage": "all",
+  "status": "complete",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "scikit-learn": "1.8.0",
+      "pandas": "2.2.3",
+      "nltk": "3.9.2",
+      "spacy": "3.8.14",
+      "en-core-web-sm": "3.8.0",
+      "joblib": "1.6.0",
+      "threadpoolctl": "3.7.0",
+      "nbformat": "5.10.4"
+    }
+  },
+  "splits_read": [
+    "train",
+    "dev"
+  ],
+  "test_opened": false,
+  "test_scored": false,
+  "source_only_features": true,
+  "scope": "gold-conditioned one-to-one subset",
+  "selection_protocol_recorded_before_fit": "Within each C maximize typed micro F0.5; exact ties prefer higher precision, then higher tau. Across C, choose the smallest C with score less than 0.005 below the global maximum. kNN maximizes F0.5; exact ties prefer higher precision, then smaller k, then higher tau. Both LR variants use the same rule.",
+  "data": [
+    {
+      "split": "train",
+      "original_records": 15187,
+      "records": 14610,
+      "tokens": 416571,
+      "SVA": 1005,
+      "VFORM": 1190,
+      "NNUM": 1668,
+      "unique_sources": 14479,
+      "excluded_records": 577,
+      "input_sha256": "3940854d996daa4abe1fdc90bc1fecff456655f687dedfcddc7d70c65e064d5a",
+      "token_hash": "12e7e0bcc5f99e99a6be931f32ee7a72c72d08f234e207eb2d836800277a0cca",
+      "excluded_by_kind": {
+        "insertion": 211,
+        "multi_token_replacement": 281,
+        "deletion": 85
+      },
+      "legacy_retention_changes": [
+        "train:001210",
+        "train:001516",
+        "train:001633",
+        "train:001946",
+        "train:008000",
+        "train:008762",
+        "train:012667",
+        "train:013924"
+      ]
+    },
+    {
+      "split": "dev",
+      "original_records": 2413,
+      "records": 2367,
+      "tokens": 68382,
+      "SVA": 74,
+      "VFORM": 69,
+      "NNUM": 120,
+      "unique_sources": 2367,
+      "excluded_records": 46,
+      "input_sha256": "98674e5f9cd731925f448aec5a2c7c60f7824daa18139de3be6d8b394717a752",
+      "token_hash": "18887e6b1e83217cf0b47a19af1e7bbd777ce8069accf1f924e61429684aefc8",
+      "excluded_by_kind": {
+        "insertion": 8,
+        "multi_token_replacement": 34,
+        "deletion": 4
+      },
+      "legacy_retention_changes": []
+    }
+  ],
+  "completed_stages": [
+    "data",
+    "POS",
+    "LR_base",
+    "reference_review",
+    "LR_parser",
+    "kNN"
+  ],
+  "completed_at": "2026-10-22T20:52:41+07:00",
+  "selected": {
+    "LR_base": {
+      "parameters": {
+        "system": "LR_base",
+        "C": 1.0,
+        "tau": 0.45,
+        "TP": 38,
+        "FP": 112,
+        "FN": 225,
+        "P": 0.25333333333333335,
+        "R": 0.1444866920152091,
+        "F1": 0.18401937046004843,
+        "F0.5": 0.220162224797219,
+        "n_iter": 53,
+        "converged": true,
+        "fit_seconds": 11.453053400000499,
+        "feature_count": 126797
+      },
+      "per_C_best": [
+        {
+          "system": "LR_base",
+          "C": 0.1,
+          "tau": 0.3,
+          "TP": 28,
+          "FP": 69,
+          "FN": 235,
+          "P": 0.28865979381443296,
+          "R": 0.10646387832699619,
+          "F1": 0.15555555555555556,
+          "F0.5": 0.21505376344086022,
+          "n_iter": 38,
+          "converged": true,
+          "fit_seconds": 8.090945800000554,
+          "feature_count": 126797
+        },
+        {
+          "system": "LR_base",
+          "C": 0.3,
+          "tau": 0.3,
+          "TP": 46,
+          "FP": 165,
+          "FN": 217,
+          "P": 0.21800947867298578,
+          "R": 0.17490494296577946,
+          "F1": 0.1940928270042194,
+          "F0.5": 0.20776874435411022,
+          "n_iter": 44,
+          "converged": true,
+          "fit_seconds": 10.651346200000262,
+          "feature_count": 126797
+        },
+        {
+          "system": "LR_base",
+          "C": 1.0,
+          "tau": 0.45,
+          "TP": 38,
+          "FP": 112,
+          "FN": 225,
+          "P": 0.25333333333333335,
+          "R": 0.1444866920152091,
+          "F1": 0.18401937046004843,
+          "F0.5": 0.220162224797219,
+          "n_iter": 53,
+          "converged": true,
+          "fit_seconds": 11.453053400000499,
+          "feature_count": 126797
+        },
+        {
+          "system": "LR_base",
+          "C": 3.0,
+          "tau": 0.65,
+          "TP": 28,
+          "FP": 65,
+          "FN": 235,
+          "P": 0.3010752688172043,
+          "R": 0.10646387832699619,
+          "F1": 0.15730337078651685,
+          "F0.5": 0.2204724409448819,
+          "n_iter": 51,
+          "converged": true,
+          "fit_seconds": 8.335370400000102,
+          "feature_count": 126797
+        }
+      ],
+      "bundle": "models\\lr_base_selected.joblib"
+    },
+    "LR_reference": {
+      "C": 3.0,
+      "tau": 0.65,
+      "bundle": "models\\lr_reference.joblib",
+      "FP_untyped": 63,
+      "FN_untyped": 233,
+      "report_expected_FP": 63,
+      "matches_report_FP_count": true
+    },
+    "LR_parser": {
+      "parameters": {
+        "system": "LR_parser",
+        "C": 0.1,
+        "tau": 0.35,
+        "TP": 27,
+        "FP": 55,
+        "FN": 236,
+        "P": 0.32926829268292684,
+        "R": 0.10266159695817491,
+        "F1": 0.1565217391304348,
+        "F0.5": 0.22842639593908629,
+        "n_iter": 34,
+        "converged": true,
+        "fit_seconds": 8.695860599998923,
+        "feature_count": 126847
+      },
+      "per_C_best": [
+        {
+          "system": "LR_parser",
+          "C": 0.1,
+          "tau": 0.35,
+          "TP": 27,
+          "FP": 55,
+          "FN": 236,
+          "P": 0.32926829268292684,
+          "R": 0.10266159695817491,
+          "F1": 0.1565217391304348,
+          "F0.5": 0.22842639593908629,
+          "n_iter": 34,
+          "converged": true,
+          "fit_seconds": 8.695860599998923,
+          "feature_count": 126847
+        },
+        {
+          "system": "LR_parser",
+          "C": 0.3,
+          "tau": 0.35,
+          "TP": 43,
+          "FP": 126,
+          "FN": 220,
+          "P": 0.25443786982248523,
+          "R": 0.1634980988593156,
+          "F1": 0.19907407407407407,
+          "F0.5": 0.22896698615548455,
+          "n_iter": 42,
+          "converged": true,
+          "fit_seconds": 9.670988900001248,
+          "feature_count": 126847
+        },
+        {
+          "system": "LR_parser",
+          "C": 1.0,
+          "tau": 0.6,
+          "TP": 26,
+          "FP": 53,
+          "FN": 237,
+          "P": 0.3291139240506329,
+          "R": 0.09885931558935361,
+          "F1": 0.15204678362573099,
+          "F0.5": 0.22452504317789293,
+          "n_iter": 50,
+          "converged": true,
+          "fit_seconds": 11.813654600000518,
+          "feature_count": 126847
+        },
+        {
+          "system": "LR_parser",
+          "C": 3.0,
+          "tau": 0.5,
+          "TP": 45,
+          "FP": 156,
+          "FN": 218,
+          "P": 0.22388059701492538,
+          "R": 0.17110266159695817,
+          "F1": 0.1939655172413793,
+          "F0.5": 0.21087160262417995,
+          "n_iter": 46,
+          "converged": true,
+          "fit_seconds": 10.488323900000978,
+          "feature_count": 126847
+        }
+      ],
+      "bundle": "models\\lr_parser_selected.joblib",
+      "parser_metadata": [
+        {
+          "spacy": "3.8.14",
+          "model": "en_core_web_sm",
+          "model_version": "3.8.0",
+          "tokens": "12e7e0bcc5f99e99a6be931f32ee7a72c72d08f234e207eb2d836800277a0cca",
+          "algorithm": "v1: direct subject; auxiliary inherits lexical head subject; exact signed distance",
+          "pipeline": [
+            "tok2vec",
+            "tagger",
+            "parser",
+            "attribute_ruler"
+          ],
+          "tokenization": "Doc(words=EXPECT tokens, spaces=True except final token)"
+        },
+        {
+          "spacy": "3.8.14",
+          "model": "en_core_web_sm",
+          "model_version": "3.8.0",
+          "tokens": "18887e6b1e83217cf0b47a19af1e7bbd777ce8069accf1f924e61429684aefc8",
+          "algorithm": "v1: direct subject; auxiliary inherits lexical head subject; exact signed distance",
+          "pipeline": [
+            "tok2vec",
+            "tagger",
+            "parser",
+            "attribute_ruler"
+          ],
+          "tokenization": "Doc(words=EXPECT tokens, spaces=True except final token)"
+        }
+      ]
+    },
+    "kNN": {
+      "parameters": {
+        "system": "kNN",
+        "k": 10,
+        "tau": 0.8,
+        "TP": 10,
+        "FP": 79,
+        "FN": 253,
+        "P": 0.11235955056179775,
+        "R": 0.03802281368821293,
+        "F1": 0.056818181818181816,
+        "F0.5": 0.08077544426494346,
+        "feature_count": 126797
+      },
+      "bundle": "models\\knn_selected.joblib"
+    }
+  },
+  "code_sha256": {
+    "gec\\__init__.py": "3aeb621fd3ed364736b11cd0acd803848165ad077e58ff8263cbe97b524d2795",
+    "gec\\data.py": "2bca6b12ab7384eb4ac6802ca0fd48a1190969883e5df5b1824e48ad86d96f61",
+    "gec\\dependency.py": "ad5014105721cc9c9e822075c5e1b7101ec3cd4b5123e8639acd6c94b3317562",
+    "gec\\exports.py": "df2383cfb077c6e903f41e67571e4467af2184210ad52cb602ac04f1f0a46cb0",
+    "gec\\feature_strings.py": "7d98904bb59d91cc7ce9783687246377d5ce63b9b4888980e78f9119dae8a0bf",
+    "gec\\features.py": "1f45071ea9fa5f07a1b21d1a774db4b5faf6d4869d69f7fd809c38c42b7e3d76",
+    "gec\\io_utils.py": "ba2f290a3ad3d465bc292e05c3efbca8579131cdd2e7b9aacc027e7fe02ebe95",
+    "gec\\metrics.py": "ce9ecab982cd61ad2c2642b370a66309db1f0723edd1b3c16c823a6c576f47d5",
+    "gec\\models.py": "554bd9cb59dfc10451f0a4e8f7d5a51b72e85aab6462d47d1294c9c64b47135e",
+    "gec\\pipeline.py": "aae512ff76c06ad51b72dd5f6566810fab3e3399cb8a628fc5ac0aadb37f1ed4",
+    "gec\\rules.py": "e5518ebf6bce00b2c6560a4a334e9bd7e8b0547717431c0c47db1f59d77c0f1c",
+    "gec\\safety.py": "57adb2ba0fa328c5e00fb1094b9111147053614e8ddb0cf1dc7e391d9362561c",
+    "bootstrap.py": "fc96283e757a5379629e47f4e5bc18066cb8fdaea4c9f1d6f82c2d4b65248ea3",
+    "run_dev.py": "e759a297e5825fdd5ee8b50b712eaaf7dc6fa552cc3e5284227107b51e7a624d",
+    "run_final_test.py": "f6cdda04410438497d2f3b54f78ae295fda5676ad3bad542e3b0ede3d81b1d82"
+  }
+}

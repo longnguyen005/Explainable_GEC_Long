@@ -1,0 +1,32 @@
+# Local Python environments and bytecode
+.deps/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Reproducibility assets are provided in the private GitHub Release archive.
+/data/
+/models/
+/cache/
+/resources/
+/outputs/**/predictions*.csv
+/outputs/audit/records_audit.csv
+
+# Never include test inputs or local credentials.
+**/test.json
+**/test.pkl
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+
+# Distribution bundles and OS metadata
+*.zip
+*.tar.gz
+.DS_Store
+Thumbs.db

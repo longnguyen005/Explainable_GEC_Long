@@ -1,0 +1,602 @@
+[
+  {
+    "record_id": "dev:000756",
+    "split": "dev",
+    "record_number_1based": 756,
+    "file_line_1based": 756,
+    "raw": {
+      "target": [
+        "Besides",
+        ",",
+        "public",
+        "transport",
+        "pollutes",
+        "less",
+        "than",
+        "cars",
+        "."
+      ],
+      "source": [
+        "Besides",
+        ",",
+        "public",
+        "transport",
+        "pollute",
+        "less",
+        "than",
+        "cars",
+        "."
+      ],
+      "evidence_index": [
+        2,
+        3,
+        12,
+        13
+      ],
+      "correction_index": [
+        4,
+        14
+      ],
+      "error_type": "Subject-Verb Agreement",
+      "predicted_parsing_order": {
+        "3": 2,
+        "4": 1,
+        "5": 2,
+        "6": 3,
+        "13": 2,
+        "14": 1,
+        "15": 2,
+        "16": 3
+      },
+      "origin": "A"
+    },
+    "source_text_id": "2abacf2793b1bbdcf2c830c22318529013d994048e0c0221fa2fd7a7e1ae2b74",
+    "clean_source_tokens": [
+      "Besides",
+      ",",
+      "public",
+      "transport",
+      "pollute",
+      "less",
+      "than",
+      "cars",
+      "."
+    ],
+    "raw_source_to_clean_index": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "target_offset": 0,
+    "source_offset": 10,
+    "target_positions_raw_0based": [
+      4
+    ],
+    "source_positions_raw_0based": [
+      4
+    ],
+    "source_positions_clean_0based": [
+      4
+    ],
+    "source_gap_positions_clean_0based": [],
+    "source_edit_tokens": [
+      "pollute"
+    ],
+    "target_edit_tokens": [
+      "pollutes"
+    ],
+    "mapped_type": "SVA",
+    "edit_kind": "substitution_1_to_1",
+    "strict_one_to_one": true,
+    "retained": true,
+    "outside_span_equal": true,
+    "labels_before_filter_diagnostic": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "SVA",
+      "O",
+      "O",
+      "O",
+      "O"
+    ],
+    "labels_after_filter": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "SVA",
+      "O",
+      "O",
+      "O",
+      "O"
+    ],
+    "legacy_retained": true,
+    "legacy_source_positions_clean_0based": [
+      4
+    ],
+    "legacy_source_edit_tokens": [
+      "pollute"
+    ],
+    "legacy_target_edit_tokens": [
+      "pollutes"
+    ],
+    "example_number": 1,
+    "purpose": "Giữ mẫu thay thế 1-1: SVA"
+  },
+  {
+    "record_id": "dev:001803",
+    "split": "dev",
+    "record_number_1based": 1803,
+    "file_line_1based": 1803,
+    "raw": {
+      "target": [
+        "·Other",
+        "ideas",
+        "for",
+        "having",
+        "fun"
+      ],
+      "source": [
+        "·Other",
+        "ideas",
+        "for",
+        "have",
+        "fun"
+      ],
+      "evidence_index": [
+        2,
+        8
+      ],
+      "correction_index": [
+        3,
+        9
+      ],
+      "error_type": "Gerund",
+      "predicted_parsing_order": {
+        "1": 3,
+        "2": 2,
+        "3": 1,
+        "4": 2,
+        "7": 3,
+        "8": 2,
+        "9": 1,
+        "10": 2
+      },
+      "origin": "B"
+    },
+    "source_text_id": "ac393d718e7f5b156bcd931984bb009611c475100626510549937e72f511de07",
+    "clean_source_tokens": [
+      "·Other",
+      "ideas",
+      "for",
+      "have",
+      "fun"
+    ],
+    "raw_source_to_clean_index": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "target_offset": 0,
+    "source_offset": 6,
+    "target_positions_raw_0based": [
+      3
+    ],
+    "source_positions_raw_0based": [
+      3
+    ],
+    "source_positions_clean_0based": [
+      3
+    ],
+    "source_gap_positions_clean_0based": [],
+    "source_edit_tokens": [
+      "have"
+    ],
+    "target_edit_tokens": [
+      "having"
+    ],
+    "mapped_type": "VFORM",
+    "edit_kind": "substitution_1_to_1",
+    "strict_one_to_one": true,
+    "retained": true,
+    "outside_span_equal": true,
+    "labels_before_filter_diagnostic": [
+      "O",
+      "O",
+      "O",
+      "VFORM",
+      "O"
+    ],
+    "labels_after_filter": [
+      "O",
+      "O",
+      "O",
+      "VFORM",
+      "O"
+    ],
+    "legacy_retained": true,
+    "legacy_source_positions_clean_0based": [
+      3
+    ],
+    "legacy_source_edit_tokens": [
+      "have"
+    ],
+    "legacy_target_edit_tokens": [
+      "having"
+    ],
+    "example_number": 2,
+    "purpose": "Giữ mẫu thay thế 1-1: VFORM"
+  },
+  {
+    "record_id": "dev:000823",
+    "split": "dev",
+    "record_number_1based": 823,
+    "file_line_1based": 823,
+    "raw": {
+      "target": [
+        "They",
+        "notice",
+        "any",
+        "kind",
+        "of",
+        "failure",
+        "."
+      ],
+      "source": [
+        "They",
+        "notice",
+        "any",
+        "kind",
+        "of",
+        "failures",
+        "."
+      ],
+      "evidence_index": [
+        2,
+        3,
+        4,
+        10,
+        11,
+        12
+      ],
+      "correction_index": [
+        5,
+        13
+      ],
+      "error_type": "Number",
+      "predicted_parsing_order": {
+        "3": 3,
+        "4": 2,
+        "5": 1,
+        "11": 3,
+        "12": 2,
+        "13": 1
+      },
+      "origin": "B"
+    },
+    "source_text_id": "0ef4a107317b1c80a0527537dc8fab2282c2c714797ef3374e903d8858091781",
+    "clean_source_tokens": [
+      "They",
+      "notice",
+      "any",
+      "kind",
+      "of",
+      "failures",
+      "."
+    ],
+    "raw_source_to_clean_index": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "target_offset": 0,
+    "source_offset": 8,
+    "target_positions_raw_0based": [
+      5
+    ],
+    "source_positions_raw_0based": [
+      5
+    ],
+    "source_positions_clean_0based": [
+      5
+    ],
+    "source_gap_positions_clean_0based": [],
+    "source_edit_tokens": [
+      "failures"
+    ],
+    "target_edit_tokens": [
+      "failure"
+    ],
+    "mapped_type": "NNUM",
+    "edit_kind": "substitution_1_to_1",
+    "strict_one_to_one": true,
+    "retained": true,
+    "outside_span_equal": true,
+    "labels_before_filter_diagnostic": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "NNUM",
+      "O"
+    ],
+    "labels_after_filter": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "NNUM",
+      "O"
+    ],
+    "legacy_retained": true,
+    "legacy_source_positions_clean_0based": [
+      5
+    ],
+    "legacy_source_edit_tokens": [
+      "failures"
+    ],
+    "legacy_target_edit_tokens": [
+      "failure"
+    ],
+    "example_number": 3,
+    "purpose": "Giữ mẫu thay thế 1-1: NNUM"
+  },
+  {
+    "record_id": "dev:000257",
+    "split": "dev",
+    "record_number_1based": 257,
+    "file_line_1based": 257,
+    "raw": {
+      "target": [
+        "Write",
+        "to",
+        "me",
+        "soon"
+      ],
+      "source": [
+        "Write",
+        "[NONE]",
+        "me",
+        "soon"
+      ],
+      "evidence_index": [
+        0,
+        2,
+        5,
+        7
+      ],
+      "correction_index": [
+        1,
+        6
+      ],
+      "error_type": "Transitive Verb",
+      "predicted_parsing_order": {
+        "0": 2,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "5": 2,
+        "6": 1,
+        "7": 2,
+        "8": 3
+      },
+      "origin": "A"
+    },
+    "source_text_id": "1ae499a4ea5fa0d63625b3f79403075ffeea3ed5d4d677437aa5bfd1d3cae439",
+    "clean_source_tokens": [
+      "Write",
+      "me",
+      "soon"
+    ],
+    "raw_source_to_clean_index": [
+      0,
+      null,
+      1,
+      2
+    ],
+    "target_offset": 0,
+    "source_offset": 5,
+    "target_positions_raw_0based": [
+      1
+    ],
+    "source_positions_raw_0based": [
+      1
+    ],
+    "source_positions_clean_0based": [],
+    "source_gap_positions_clean_0based": [
+      1
+    ],
+    "source_edit_tokens": [
+      "[NONE]"
+    ],
+    "target_edit_tokens": [
+      "to"
+    ],
+    "mapped_type": null,
+    "edit_kind": "insertion",
+    "strict_one_to_one": false,
+    "retained": true,
+    "outside_span_equal": true,
+    "labels_before_filter_diagnostic": [
+      "O",
+      "O",
+      "O"
+    ],
+    "labels_after_filter": [
+      "O",
+      "O",
+      "O"
+    ],
+    "legacy_retained": true,
+    "legacy_source_positions_clean_0based": [],
+    "legacy_source_edit_tokens": [
+      "[NONE]"
+    ],
+    "legacy_target_edit_tokens": [
+      "to"
+    ],
+    "example_number": 4,
+    "purpose": "Giữ bản ghi ngoài ba loại, nhãn mục tiêu toàn O"
+  },
+  {
+    "record_id": "train:013924",
+    "split": "train",
+    "record_number_1based": 13924,
+    "file_line_1based": 13924,
+    "raw": {
+      "target": [
+        "Flying",
+        "to",
+        "different",
+        "continents",
+        "is",
+        "easy",
+        "nowadays",
+        "but",
+        "still",
+        "expensive",
+        "."
+      ],
+      "source": [
+        "To",
+        "fly",
+        "to",
+        "different",
+        "continents",
+        "is",
+        "easy",
+        "nowadays",
+        "but",
+        "still",
+        "expensive",
+        "."
+      ],
+      "evidence_index": [
+        1,
+        2,
+        3,
+        4,
+        14,
+        15,
+        16,
+        17
+      ],
+      "correction_index": [
+        0,
+        12,
+        13
+      ],
+      "error_type": "Gerund",
+      "predicted_parsing_order": {
+        "0": 1,
+        "1": 2,
+        "2": 3,
+        "5": 2,
+        "12": 1,
+        "13": 1,
+        "14": 2,
+        "15": 3,
+        "18": 2
+      },
+      "origin": "C"
+    },
+    "source_text_id": "4a68644651eb3e9e98c046cb2e52b3718dcaa185b643bb21b8c1b87a2da8cfea",
+    "clean_source_tokens": [
+      "To",
+      "fly",
+      "to",
+      "different",
+      "continents",
+      "is",
+      "easy",
+      "nowadays",
+      "but",
+      "still",
+      "expensive",
+      "."
+    ],
+    "raw_source_to_clean_index": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "target_offset": 0,
+    "source_offset": 12,
+    "target_positions_raw_0based": [
+      0
+    ],
+    "source_positions_raw_0based": [
+      0,
+      1
+    ],
+    "source_positions_clean_0based": [
+      0,
+      1
+    ],
+    "source_gap_positions_clean_0based": [],
+    "source_edit_tokens": [
+      "To",
+      "fly"
+    ],
+    "target_edit_tokens": [
+      "Flying"
+    ],
+    "mapped_type": "VFORM",
+    "edit_kind": "multi_token_replacement",
+    "strict_one_to_one": false,
+    "retained": false,
+    "outside_span_equal": true,
+    "labels_before_filter_diagnostic": [
+      "VFORM",
+      "VFORM",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ],
+    "labels_after_filter": null,
+    "legacy_retained": true,
+    "legacy_source_positions_clean_0based": [
+      0
+    ],
+    "legacy_source_edit_tokens": [
+      "To"
+    ],
+    "legacy_target_edit_tokens": [
+      "Flying"
+    ],
+    "example_number": 5,
+    "purpose": "Loại mẫu không phải 1-1; không biến thành nhãn O"
+  }
+]

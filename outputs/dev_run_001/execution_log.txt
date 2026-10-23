@@ -1,0 +1,37 @@
+train: 14610 records, 416571 tokens, gold=3863
+dev: 2367 records, 68382 tokens, gold=263
+Features base: train=(416571, 126797), dev=(68382, 126797)
+LR base C=0.1: restored fitted model
+LR base C=0.1: n_iter=38 best_tau=0.3 F0.5=0.215054
+LR base C=0.3: restored fitted model
+LR base C=0.3: n_iter=44 best_tau=0.3 F0.5=0.207769
+LR base C=1.0: restored fitted model
+LR base C=1.0: n_iter=53 best_tau=0.45 F0.5=0.220162
+LR base C=3.0: restored fitted model
+LR base C=3.0: n_iter=51 best_tau=0.65 F0.5=0.220472
+Reference review exported: 63 FP, 233 FN (actual, not forced to 63).
+Parser train: ready in 1.6s
+Parser dev: ready in 0.2s
+Features parser: train=(416571, 126847), dev=(68382, 126847)
+LR parser C=0.1: restored fitted model
+LR parser C=0.1: n_iter=34 best_tau=0.35 F0.5=0.228426
+LR parser C=0.3: restored fitted model
+LR parser C=0.3: n_iter=42 best_tau=0.35 F0.5=0.228967
+LR parser C=1.0: restored fitted model
+LR parser C=1.0: n_iter=50 best_tau=0.6 F0.5=0.224525
+LR parser C=3.0: restored fitted model
+LR parser C=3.0: n_iter=46 best_tau=0.5 F0.5=0.210872
+kNN: restored fit and dev neighbor labels
+kNN: selected k=10 tau=0.8 F0.5=0.080775
+All_O                       typed   TP=  0 FP=  0 FN=263 F0.5=0.000000
+All_O                       untyped TP=  0 FP=  0 FN=263 F0.5=0.000000
+POS                         typed   TP= 36 FP=222 FN=227 F0.5=0.138996
+POS                         untyped TP= 37 FP=221 FN=226 F0.5=0.142857
+LR_base                     typed   TP= 38 FP=112 FN=225 F0.5=0.220162
+LR_base                     untyped TP= 40 FP=110 FN=223 F0.5=0.231750
+LR_reference_C3_tau065      typed   TP= 28 FP= 65 FN=235 F0.5=0.220472
+LR_reference_C3_tau065      untyped TP= 30 FP= 63 FN=233 F0.5=0.236220
+LR_parser                   typed   TP= 27 FP= 55 FN=236 F0.5=0.228426
+LR_parser                   untyped TP= 28 FP= 54 FN=235 F0.5=0.236887
+kNN                         typed   TP= 10 FP= 79 FN=253 F0.5=0.080775
+kNN                         untyped TP= 11 FP= 78 FN=252 F0.5=0.088853

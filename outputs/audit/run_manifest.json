@@ -1,0 +1,35 @@
+{
+  "input_mode": "directory",
+  "splits_read": [
+    "train",
+    "dev"
+  ],
+  "input_files": {
+    "train": {
+      "sha256": "3940854d996daa4abe1fdc90bc1fecff456655f687dedfcddc7d70c65e064d5a",
+      "bytes": 10793812
+    },
+    "dev": {
+      "sha256": "98674e5f9cd731925f448aec5a2c7c60f7824daa18139de3be6d8b394717a752",
+      "bytes": 1731424
+    }
+  },
+  "alignment": "target + [MOD] + source",
+  "source_offset": "len(target) + 1",
+  "indexing": "0-based token indices; 1-based record numbers/file lines",
+  "target_type_map": {
+    "Subject-Verb Agreement": "SVA",
+    "Infinitives": "VFORM",
+    "Gerund": "VFORM",
+    "Participle": "VFORM",
+    "Number": "NNUM"
+  },
+  "placeholder": "[NONE]",
+  "scope": "gold-conditioned one-source-token/one-target-token substitution subset; other types retained as O",
+  "source_group_identity": "exact source token sequence after removing [NONE]; not document/sentence identity",
+  "O_means": "no observed target annotation at that token in that record; not verified grammatical correctness",
+  "test_examples_exported": false,
+  "models_trained_or_scored": false,
+  "raw_data_modified": false,
+  "reconciliation_checks_passed": true
+}

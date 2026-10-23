@@ -1,0 +1,227 @@
+{
+  "LR_base": {
+    "parameters": {
+      "system": "LR_base",
+      "C": 1.0,
+      "tau": 0.45,
+      "TP": 38,
+      "FP": 112,
+      "FN": 225,
+      "P": 0.25333333333333335,
+      "R": 0.1444866920152091,
+      "F1": 0.18401937046004843,
+      "F0.5": 0.220162224797219,
+      "n_iter": 53,
+      "converged": true,
+      "fit_seconds": 11.453053400000499,
+      "feature_count": 126797
+    },
+    "per_C_best": [
+      {
+        "system": "LR_base",
+        "C": 0.1,
+        "tau": 0.3,
+        "TP": 28,
+        "FP": 69,
+        "FN": 235,
+        "P": 0.28865979381443296,
+        "R": 0.10646387832699619,
+        "F1": 0.15555555555555556,
+        "F0.5": 0.21505376344086022,
+        "n_iter": 38,
+        "converged": true,
+        "fit_seconds": 8.090945800000554,
+        "feature_count": 126797
+      },
+      {
+        "system": "LR_base",
+        "C": 0.3,
+        "tau": 0.3,
+        "TP": 46,
+        "FP": 165,
+        "FN": 217,
+        "P": 0.21800947867298578,
+        "R": 0.17490494296577946,
+        "F1": 0.1940928270042194,
+        "F0.5": 0.20776874435411022,
+        "n_iter": 44,
+        "converged": true,
+        "fit_seconds": 10.651346200000262,
+        "feature_count": 126797
+      },
+      {
+        "system": "LR_base",
+        "C": 1.0,
+        "tau": 0.45,
+        "TP": 38,
+        "FP": 112,
+        "FN": 225,
+        "P": 0.25333333333333335,
+        "R": 0.1444866920152091,
+        "F1": 0.18401937046004843,
+        "F0.5": 0.220162224797219,
+        "n_iter": 53,
+        "converged": true,
+        "fit_seconds": 11.453053400000499,
+        "feature_count": 126797
+      },
+      {
+        "system": "LR_base",
+        "C": 3.0,
+        "tau": 0.65,
+        "TP": 28,
+        "FP": 65,
+        "FN": 235,
+        "P": 0.3010752688172043,
+        "R": 0.10646387832699619,
+        "F1": 0.15730337078651685,
+        "F0.5": 0.2204724409448819,
+        "n_iter": 51,
+        "converged": true,
+        "fit_seconds": 8.335370400000102,
+        "feature_count": 126797
+      }
+    ],
+    "bundle": "models\\lr_base_selected.joblib"
+  },
+  "LR_reference": {
+    "C": 3.0,
+    "tau": 0.65,
+    "bundle": "models\\lr_reference.joblib",
+    "FP_untyped": 63,
+    "FN_untyped": 233,
+    "report_expected_FP": 63,
+    "matches_report_FP_count": true
+  },
+  "LR_parser": {
+    "parameters": {
+      "system": "LR_parser",
+      "C": 0.1,
+      "tau": 0.35,
+      "TP": 27,
+      "FP": 55,
+      "FN": 236,
+      "P": 0.32926829268292684,
+      "R": 0.10266159695817491,
+      "F1": 0.1565217391304348,
+      "F0.5": 0.22842639593908629,
+      "n_iter": 34,
+      "converged": true,
+      "fit_seconds": 8.695860599998923,
+      "feature_count": 126847
+    },
+    "per_C_best": [
+      {
+        "system": "LR_parser",
+        "C": 0.1,
+        "tau": 0.35,
+        "TP": 27,
+        "FP": 55,
+        "FN": 236,
+        "P": 0.32926829268292684,
+        "R": 0.10266159695817491,
+        "F1": 0.1565217391304348,
+        "F0.5": 0.22842639593908629,
+        "n_iter": 34,
+        "converged": true,
+        "fit_seconds": 8.695860599998923,
+        "feature_count": 126847
+      },
+      {
+        "system": "LR_parser",
+        "C": 0.3,
+        "tau": 0.35,
+        "TP": 43,
+        "FP": 126,
+        "FN": 220,
+        "P": 0.25443786982248523,
+        "R": 0.1634980988593156,
+        "F1": 0.19907407407407407,
+        "F0.5": 0.22896698615548455,
+        "n_iter": 42,
+        "converged": true,
+        "fit_seconds": 9.670988900001248,
+        "feature_count": 126847
+      },
+      {
+        "system": "LR_parser",
+        "C": 1.0,
+        "tau": 0.6,
+        "TP": 26,
+        "FP": 53,
+        "FN": 237,
+        "P": 0.3291139240506329,
+        "R": 0.09885931558935361,
+        "F1": 0.15204678362573099,
+        "F0.5": 0.22452504317789293,
+        "n_iter": 50,
+        "converged": true,
+        "fit_seconds": 11.813654600000518,
+        "feature_count": 126847
+      },
+      {
+        "system": "LR_parser",
+        "C": 3.0,
+        "tau": 0.5,
+        "TP": 45,
+        "FP": 156,
+        "FN": 218,
+        "P": 0.22388059701492538,
+        "R": 0.17110266159695817,
+        "F1": 0.1939655172413793,
+        "F0.5": 0.21087160262417995,
+        "n_iter": 46,
+        "converged": true,
+        "fit_seconds": 10.488323900000978,
+        "feature_count": 126847
+      }
+    ],
+    "bundle": "models\\lr_parser_selected.joblib",
+    "parser_metadata": [
+      {
+        "spacy": "3.8.14",
+        "model": "en_core_web_sm",
+        "model_version": "3.8.0",
+        "tokens": "12e7e0bcc5f99e99a6be931f32ee7a72c72d08f234e207eb2d836800277a0cca",
+        "algorithm": "v1: direct subject; auxiliary inherits lexical head subject; exact signed distance",
+        "pipeline": [
+          "tok2vec",
+          "tagger",
+          "parser",
+          "attribute_ruler"
+        ],
+        "tokenization": "Doc(words=EXPECT tokens, spaces=True except final token)"
+      },
+      {
+        "spacy": "3.8.14",
+        "model": "en_core_web_sm",
+        "model_version": "3.8.0",
+        "tokens": "18887e6b1e83217cf0b47a19af1e7bbd777ce8069accf1f924e61429684aefc8",
+        "algorithm": "v1: direct subject; auxiliary inherits lexical head subject; exact signed distance",
+        "pipeline": [
+          "tok2vec",
+          "tagger",
+          "parser",
+          "attribute_ruler"
+        ],
+        "tokenization": "Doc(words=EXPECT tokens, spaces=True except final token)"
+      }
+    ]
+  },
+  "kNN": {
+    "parameters": {
+      "system": "kNN",
+      "k": 10,
+      "tau": 0.8,
+      "TP": 10,
+      "FP": 79,
+      "FN": 253,
+      "P": 0.11235955056179775,
+      "R": 0.03802281368821293,
+      "F1": 0.056818181818181816,
+      "F0.5": 0.08077544426494346,
+      "feature_count": 126797
+    },
+    "bundle": "models\\knn_selected.joblib"
+  }
+}

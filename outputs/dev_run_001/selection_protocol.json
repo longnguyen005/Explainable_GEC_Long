@@ -1,0 +1,9 @@
+{
+  "recorded_at": "2026-10-22T20:52:09+07:00",
+  "protocol": "Within each C maximize typed micro F0.5; exact ties prefer higher precision, then higher tau. Across C, choose the smallest C with score less than 0.005 below the global maximum. kNN maximizes F0.5; exact ties prefer higher precision, then smaller k, then higher tau. Both LR variants use the same rule.",
+  "reference": {
+    "C": 3.0,
+    "tau": 0.65
+  },
+  "team_review_pending": true
+}
