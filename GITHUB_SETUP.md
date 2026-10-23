@@ -11,13 +11,17 @@ cd Explainable_GEC_Long
 
 Repository riêng tư: đăng nhập tài khoản có quyền truy cập khi clone hoặc tải Release.
 
-## 2. Khôi phục dữ liệu và model từ Release
+## 2. Khôi phục dữ liệu và model từ gói cục bộ
 
-Mở [Long DEV handoff v1](https://github.com/longnguyen005/Explainable_GEC_Long/releases/tag/long-dev-v1), tải `Explainable_GEC_Long_handoff.zip`, kiểm tra SHA-256 theo phần mô tả Release. ZIP có sẵn thư mục gốc `Explainable_GEC_Long/`: giải nén vào **thư mục cha của bản clone**, cho phép gộp vào folder project cùng tên. Không giải nén bên trong project vì sẽ tạo thêm một thư mục lồng.
+Gói đầy đủ **chưa được tải lên GitHub/Releases**. Trên máy tạo dự án, gói nằm ở `../output/packages/Explainable_GEC_Long_handoff.zip`. Người clone cần nhận gói này qua kênh chia sẻ được chủ dự án cho phép; chỉ clone Git chưa có đủ dữ liệu/model để tái lập lần chạy đã lưu.
+
+SHA-256 của ZIP: `5517fdd16199ee9b17e04b68123922abe4c634124ad5dca3907e63621ad77473`.
+
+ZIP có sẵn thư mục gốc `Explainable_GEC_Long/`: giải nén vào **thư mục cha của bản clone**, cho phép gộp vào folder project cùng tên. Không giải nén bên trong project vì sẽ tạo thêm một thư mục lồng.
 
 Gói này là snapshot gốc của lần chạy DEV ngày 22/10/2026: train/dev, fitted models, predictions, kết quả, manifests và tài nguyên NLTK POS. Không có dữ liệu hoặc kết quả test. `.deps/` và runtime cache không nằm trong ZIP; model spaCy được cài từ requirements, xem bước 3.
 
-`data/`, `models/`, `cache/`, `resources/`, các CSV dự đoán đầy đủ và bảng audit từng record được bỏ khỏi Git. Model kNN khoảng 128 MB vượt giới hạn file Git thông thường; các artifact lớn được phân phối qua Release. Git vẫn lưu bảng metrics, tuning, cấu hình, audit tóm tắt, bốn ví dụ parser và phiếu review.
+`data/`, `models/`, `cache/`, `resources/`, các CSV dự đoán đầy đủ và bảng audit từng record được bỏ khỏi Git. Model kNN khoảng 128 MB vượt giới hạn file Git thông thường; các artifact lớn hiện chỉ có trong gói cục bộ. Git vẫn lưu bảng metrics, tuning, cấu hình, audit tóm tắt, bốn ví dụ parser và phiếu review.
 
 `ARTIFACTS_SHA256.json` mô tả snapshot trong ZIP, không bao gồm các file thiết lập GitHub được thêm sau đó. Không chỉnh các file code/model đã khóa nếu muốn xác minh lại đúng snapshot.
 
@@ -32,7 +36,7 @@ python -m unittest discover -s tests -v
 python verify_run.py
 ```
 
-`verify_run.py` kiểm tra các artifact DEV có sẵn, gồm nạp model và đối chiếu dự đoán trên dev; không huấn luyện hay chấm test. Nếu chỉ clone mà chưa giải nén Release, công cụ sẽ thiếu dữ liệu/model/predictions.
+`verify_run.py` kiểm tra các artifact DEV có sẵn, gồm nạp model và đối chiếu dự đoán trên dev; không huấn luyện hay chấm test. Nếu chỉ clone mà chưa giải nén gói cục bộ, công cụ sẽ thiếu dữ liệu/model/predictions.
 
 Đọc [README.md](README.md) để xem pipeline và cách chạy lại dev, [LONG_HANDOFF.md](LONG_HANDOFF.md) để xem phân tích kết quả. Không cần train lại để đọc bảng đã xuất.
 

@@ -7,7 +7,7 @@ __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
 
-# Reproducibility assets are provided in the private GitHub Release archive.
+# Reproducibility assets remain in the local handoff archive, outside Git.
 /data/
 /models/
 /cache/
