@@ -79,7 +79,7 @@ Phiếu TV1 được nhóm chọn làm phiếu chung từ bản nháp có AI h�
 
 ## Test cuối
 
-`run_dev.py` không có tùy chọn test và có guard cấm mở test.json/test.pkl. Test cuối là entry point riêng `run_final_test.py`; không được notebook hoặc script dev gọi tự động. Đánh giá tập `test` cho triển khai này đã được thực hiện ngày **03/11/2026** và lưu cố định tại `outputs/final_test_cc1e75b079e005f0/` (`metrics_test.csv`, `evaluation_state.json`, `predictions_*.csv`).
+`run_dev.py` không có tùy chọn test và có guard cấm mở test.json/test.pkl. Test cuối là entry point riêng `run_final_test.py`; không được notebook hoặc script dev gọi tự động. Đánh giá tập `test` cho triển khai này đã được thực hiện ngày **03/11/2026** và lưu cố định tại `outputs/final_test_cc1e75b079e005f0/` (`metrics_test.csv`, `evaluation_state.json`, `predictions_*.csv`). Trước khi thống nhất chọn bản `Explainable_GEC_Long`, nhóm có một đợt chạy trên nhánh triển khai ngày 02/11/2026; cả hai đợt đều không dùng kết quả `test` để chọn lại `C`, `k` hay ngưỡng `tau` (chi tiết lịch sử hai đợt test và bảng đóng góp thực tế của Nguyễn Thành Long, Vũ Thị Loan, Mai Hải Yến xem tại `TONG_HOP_KET_QUA_BAO_CAO_GROUP02.md` và `LONG_HANDOFF.md`).
 
 ## Nguồn kỹ thuật
 
