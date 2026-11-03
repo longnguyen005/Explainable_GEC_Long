@@ -98,20 +98,19 @@ def main():
     reference_metric = next(r for r in micro if r['system'] == 'LR_reference_C3_tau065' and r['scoring'] == 'untyped')
     fp = int(reference_metric['FP'])
     tp = int(reference_metric['TP'])
-    instructions = f'''# Phiếu review độc lập cho Loan và Yến
+    review_status = read_json(out / 'baseline_ref/review_status.json')
+    instructions = f'''# Phiếu review cho Loan và Yến
 
 Danh sách này thuộc LR tham chiếu C=3, tau=0.65, dữ liệu đã sửa alignment. Có {tp} TP và {fp} FP untyped, tổng {tp+fp} cảnh báo. Không dùng danh sách này để đánh giá LR_base có cấu hình khác hoặc LR_parser.
 
-1. Loan mở review_Loan.csv; Yến mở review_Yen.csv. Cả hai đọc cùng toàn bộ {fp} ca.
-2. Điền review_label_A_B_C bằng A/B/C; ghi reason, suggested_error_type, suggested_correction, reviewer, reviewed_at.
-3. A: token phù hợp ngữ pháp, mô hình báo nhầm. B: có lỗi thuộc SVA/VFORM/NNUM tại vị trí dự đoán mà annotation chưa phản ánh. C: chưa chắc hoặc thiếu ngữ cảnh. B cần nêu cách sửa và căn cứ; một lỗi ở vị trí khác không đủ để xác nhận dự đoán.
-4. Đọc độc lập, không xem nhãn của nhau. Dùng source đầy đủ; target_edit_reference chỉ là phép sửa được annotation, không khẳng định mọi vị trí còn lại đều đúng.
-5. Giữ nguyên bản nhãn độc lập trước thảo luận. Chạy summarize_reviews.py để lập bảng bất đồng; chương trình không tự điền đồng thuận.
-6. Sau thảo luận, điền review_consensus.csv và chạy lại công cụ để tổng hợp. Giữ C nếu chưa chắc.
+1. Loan (`review_Loan.csv`, bản gốc `raw_TV1_Loan.csv`) và Yến (`review_Yen.csv`, bản gốc `raw_TV2_Yen.csv`) đã kiểm tra đủ {fp} ca.
+2. Nhãn `review_label_A_B_C` gồm A/B/C; kèm `reason`, `suggested_error_type`, `suggested_correction`, `reviewer`, `reviewed_at`.
+3. A: token phù hợp ngữ pháp, mô hình báo nhầm ({review_status.get('A', 0)} ca). B: có lỗi tại vị trí dự đoán mà annotation chưa phản ánh ({review_status.get('B', 0)} ca, trong đó {review_status.get('B_in_scope_3_types', 0)} ca thuộc SVA/VFORM/NNUM và {review_status.get('B_out_of_scope', 0)} ca ngoài phạm vi/chưa chốt thì). C: chưa chắc hoặc thiếu ngữ cảnh ({review_status.get('C', 0)} ca).
+4. Kết quả tổng hợp lưu tại `independent_comparison.csv`, `review_consensus.csv` và `review_status.json`.
 
-Precision vị trí rà soát = ({tp}+B)/{tp+fp}. Cận giả định = [({tp}+B)/{tp+fp}, ({tp}+B+C)/{tp+fp}], không phải khoảng tin cậy. Đây là rà soát nội bộ, không phải nhãn chuyên gia; không thay thế điểm benchmark và không tạo ra recall/F0.5 đã hiệu chỉnh.
-
-Hai phiếu hiện để trống có chủ ý. Long/AI không điền thay hai người đánh giá độc lập.
+Precision vị trí rà soát (chỉ tính B thuộc 3 nhãn SVA/VFORM/NNUM) = ({tp}+{review_status.get('B_in_scope_3_types', 0)})/{tp+fp} = {review_status.get('estimated_precision_in_scope_3_types', 0):.6f}.
+Precision vị trí rà soát (tính toàn bộ B) = ({tp}+{review_status.get('B', 0)})/{tp+fp} = {review_status.get('estimated_precision', 0):.6f}.
+Cận giả định = [({tp}+B)/{tp+fp}, ({tp}+B+C)/{tp+fp}], không phải khoảng tin cậy. Đây là rà soát nội bộ có AI hỗ trợ đã được hai người đọc kiểm tra, không phải nhãn chuyên gia; không báo cáo độ đồng thuận độc lập hay Cohen kappa giữa hai bản sao.
 '''
     (out / 'baseline_ref/REVIEW_GUIDE_VI.md').write_text(instructions, encoding='utf-8')
 
@@ -126,7 +125,7 @@ Ngày tạo: {timestamp()}
 
 ## Trạng thái
 
-Đã sửa pipeline dữ liệu, chạy All O/POS/LR/kNN, tái tạo LR tham chiếu Week 9, hoàn thành thí nghiệm dependency, lưu model/config và kiểm tra lại dự đoán sau khi nạp model. Mã gốc không đổi. Chỉ train/dev được đọc; chưa mở/chấm test. Hai người vẫn cần thực hiện review độc lập và nhóm cần xem xét cấu hình trước đánh giá cuối.
+Đã sửa pipeline dữ liệu, chạy All O/POS/LR/kNN, tái tạo LR tham chiếu Week 9, hoàn thành thí nghiệm dependency, lưu model/config, kiểm tra lại dự đoán sau khi nạp model và chuẩn hóa/tổng hợp kết quả rà soát 63 FP của Vũ Thị Loan (TV1) và Mai Hải Yến (TV2). Mã gốc không đổi. Chỉ train/dev được đọc; chưa mở/chấm test. Nhóm cần xem xét cấu hình trước đánh giá cuối.
 
 ## Dữ liệu đã kiểm tra
 
@@ -164,13 +163,18 @@ Các nhận xét cú pháp trên là phân tích đầu ra parser trong ngữ c�
 
 kNN chọn k={selected['kNN']['parameters']['k']}, tau={selected['kNN']['parameters']['tau']}; 42.493 mẫu (3.863 lỗi + 38.630 O), SVD 200 chiều, cosine, seed=0. Với k=10, tau=0.75 và 0.80 cùng yêu cầu ít nhất 8/10 láng giềng là lỗi; khác ngưỡng ghi với report nhưng cùng quyết định. Ties trong grid ưu tiên tau cao hơn. Không suy nguyên nhân kNN thấp chỉ từ điểm tổng.
 
-## Bàn giao cho Loan và Yến
+## Kết quả rà soát 63 FP của Loan và Yến
 
-- baseline_ref/fp_reference.csv: đủ 63 FP untyped, giữ câu/token/ID/probability và annotation tham chiếu.
-- baseline_ref/review_Loan.csv và review_Yen.csv: hai phiếu giống nhau, cột nhãn/lý do còn trống.
-- baseline_ref/fn_reference.csv: 233 FN untyped để chẩn đoán.
-- baseline_ref/REVIEW_GUIDE_VI.md: rubric và công thức precision đúng cho LR tham chiếu.
-- Chạy summarize_reviews.py để kiểm tra đủ ca, ghi bất đồng rồi nhập đồng thuận thủ công. Không tính precision rà soát khi phiếu chưa hoàn tất.
+- `baseline_ref/fp_reference.csv`: đủ 63 FP untyped, giữ câu/token/ID/probability và annotation tham chiếu.
+- `baseline_ref/raw_TV1_Loan.csv` và `raw_TV2_Yen.csv`: bản gốc phiếu rà soát 63 FP của Vũ Thị Loan và Mai Hải Yến (ngày 2026-10-27).
+- `baseline_ref/review_Loan.csv`, `review_Yen.csv`, `review_consensus.csv`, `review_status.json`: đã chuẩn hóa và tổng hợp bằng `summarize_reviews.py` (63/63 ca hoàn tất).
+- Thống kê 63 ca FP (`LR_reference_C3_tau065`, 30 TP + 63 FP = 93 cảnh báo):
+  - **A (báo nhầm thật):** {review_status.get('A', 0)} ca.
+  - **B (lỗi thật nhưng gold chưa ghi):** {review_status.get('B', 0)} ca — gồm **{review_status.get('B_in_scope_3_types', 0)} ca thuộc 3 nhãn mục tiêu** (`SVA`: 5, `VFORM`: 3, `NNUM`: 2), **3 ca `Khác`** ngoài phạm vi (`FP021`, `FP028`, `FP048`) và **1 ca `Chưa xác định`** (`FP049`).
+  - **C (chưa chắc / thiếu ngữ cảnh):** {review_status.get('C', 0)} ca.
+  - **Precision hiệu chỉnh (chỉ tính 10 ca B thuộc 3 nhãn):** `(30 + 10) / 93` = **{review_status.get('estimated_precision_in_scope_3_types', 0):.6f}** (cận trên giả định gộp C: `55 / 93` = {review_status.get('assumption_upper_bound_in_scope_3_types', 0):.6f}).
+  - **Precision hiệu chỉnh (tính cả 14 ca B):** `(30 + 14) / 93` = **{review_status.get('estimated_precision', 0):.6f}** (cận trên giả định gộp C: `59 / 93` = {review_status.get('assumption_upper_bound', 0):.6f}).
+  - Lưu ý phương pháp: Hai phiếu TV1 và TV2 kiểm duyệt trên cùng bản gợi ý có AI hỗ trợ; không báo cáo độ đồng thuận độc lập hay hệ số Cohen kappa giữa hai bản này.
 
 ## Cấu hình khóa và test
 
@@ -180,7 +184,7 @@ Entry point run_final_test.py đã chuẩn bị, cần đường dẫn test do n
 
 ## Kiểm tra đã thực hiện
 
-- 13 unit tests cho alignment, scoring, ngưỡng, tie rule, parser aux/chủ ngữ bên phải và chặn test.
+- 14 unit tests cho alignment, scoring, ngưỡng, tie rule, parser aux/chủ ngữ bên phải, chuẩn hóa phiếu review 63 FP và chặn test.
 - Đối chiếu độc lập các số TP/FP/FN và F0.5 từ toàn bộ CSV bằng bộ đếm Python khác scorer numpy.
 - Nạp lại ba LR đã lưu, dự đoán toàn bộ dev trùng CSV.
 - Nạp lại kNN và kiểm tra 128 vị trí trải đều dev.
@@ -197,7 +201,7 @@ Entry point run_final_test.py đã chuẩn bị, cần đường dẫn test do n
 
 ## File nên mở trước
 
-README.md để chạy; outputs/dev_run_001/metrics_dev.csv để xem điểm; parser_four_cases.csv để đọc ví dụ; baseline_ref/ để bàn giao review. Notebook EXPECT_Long_Dev.ipynb chứa các cell đã chạy để kiểm tra và trình bày kết quả lưu sẵn, có tùy chọn tái chạy pipeline dev. Việc huấn luyện thực tế được thực hiện qua CLI và lưu log, không khẳng định đã dùng một Jupyter server.
+README.md để chạy; outputs/dev_run_001/metrics_dev.csv để xem điểm; parser_four_cases.csv để đọc ví dụ; baseline_ref/ để xem kết quả review 63 FP. Notebook EXPECT_Long_Dev.ipynb chứa các cell đã chạy để kiểm tra và trình bày kết quả lưu sẵn, có tùy chọn tái chạy pipeline dev. Việc huấn luyện thực tế được thực hiện qua CLI và lưu log, không khẳng định đã dùng một Jupyter server.
 '''
     (ROOT / 'LONG_HANDOFF.md').write_text(handoff, encoding='utf-8')
 
@@ -223,7 +227,7 @@ README.md để chạy; outputs/dev_run_001/metrics_dev.csv để xem điểm; p
         nbformat.v4.new_code_cell("metrics = pd.read_csv(OUT / 'metrics_dev.csv')\nprint(metrics[metrics['label'].eq('MICRO')][['system','scoring','TP','FP','FN','P','R','F0.5']].to_string(index=False))"),
         nbformat.v4.new_code_cell("grid = pd.read_csv(OUT / 'tuning_grid.csv')\nassert len(grid) == 228\nprint(pd.read_csv(OUT / 'lr_best_per_C.csv')[['system','C','tau','F0.5','selected_C']].to_string(index=False))\nprint('Grid rows:', len(grid))"),
         nbformat.v4.new_code_cell("classes = metrics[metrics['system'].isin(['LR_base','LR_parser']) & metrics['label'].ne('MICRO')]\nprint(classes[['system','label','TP','FP','FN','P','R','F0.5']].to_string(index=False))\ncases = pd.read_csv(OUT / 'parser_four_cases.csv')\nprint(cases[['report_case_name','token','subject_text','reference_C3_tau065_prediction','base_prediction','parser_prediction']].to_string(index=False))"),
-        nbformat.v4.new_code_cell("for person in ['Loan','Yen']:\n    review = pd.read_csv(OUT / 'baseline_ref' / f'review_{person}.csv', keep_default_na=False)\n    done = review['review_label_A_B_C'].str.strip().ne('').sum()\n    print(person, 'completed:', done, '/', len(review))\nprint('Phiếu để người đọc độc lập điền; chưa có precision rà soát.')"),
+        nbformat.v4.new_code_cell("for person in ['Loan','Yen']:\n    review = pd.read_csv(OUT / 'baseline_ref' / f'review_{person}.csv', keep_default_na=False)\n    done = review['review_label_A_B_C'].str.strip().ne('').sum()\n    print(person, 'completed:', done, '/', len(review))\nstatus = json.loads((OUT / 'baseline_ref' / 'review_status.json').read_text(encoding='utf-8'))\nprint(f\"A={status['A']}, B={status['B']} (in-scope 3 types={status['B_in_scope_3_types']}, out-of-scope={status['B_out_of_scope']}), C={status['C']}\")\nprint(f\"Adjusted precision (in-scope 3 types): {status['estimated_precision_in_scope_3_types']:.6f} | (all B): {status['estimated_precision']:.6f}\")"),
         nbformat.v4.new_code_cell("verification = json.loads((OUT / 'verification.json').read_text(encoding='utf-8'))\nassert verification['status'] == 'passed'\nfrom gec.io_utils import sha256\nlocked = json.loads((OUT / 'config_locked.json').read_text(encoding='utf-8'))\nfor entry in locked['bundles'].values():\n    assert sha256(ROOT / entry['path']) == entry['sha256']\nprint('Independent verification:', verification['status'])\nprint('Model checksums: matched')\nprint('Frozen state:', locked['status'], '; team review pending:', locked['team_review_pending'])\nprint('Test scored:', verification['test_scored'])"),
         nbformat.v4.new_markdown_cell('Kết luận trên dev: SVA F0.5 tăng nhờ giảm FP, recall giữ nguyên. VFORM/NNUM giảm ở cấu hình parser được chọn. Chưa suy ra chất lượng trên test hoặc độ tin cậy phản hồi cho người học. Xem LONG_HANDOFF.md để đọc đầy đủ giới hạn và cách bàn giao.')
     ]

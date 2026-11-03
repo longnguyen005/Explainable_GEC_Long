@@ -1,6 +1,11 @@
 {
   "FP_untyped": 63,
   "FN_untyped": 233,
-  "human_labels_completed": false,
-  "instruction": "Both reviewers annotate the same entire FP list independently. Do not copy AI judgments."
+  "human_labels_completed": true,
+  "instruction": "Both reviewers annotate the same entire FP list independently. Do not copy AI judgments.",
+  "reviewers": [
+    "VŨ THỊ LOAN",
+    "MAI HẢI YẾN"
+  ],
+  "reviewed_at": "2026-10-27"
 }

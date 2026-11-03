@@ -1,6 +1,8 @@
 # Bắt đầu từ bản clone GitHub
 
-Repo chứa phần việc của Long: pipeline đã audit alignment, baseline All-O/POS, LR, kNN, thử nghiệm dependency parser, notebook, unit tests và kết quả DEV đã khóa. Không chứa phần việc của Mai Yến. Test chưa được mở hoặc chấm; hai phiếu review độc lập của Loan/Yến vẫn để trống.
+Repo chứa toàn bộ pipeline và kết quả hoàn chỉnh của Nhóm 2 (Group 02): pipeline đã audit alignment, baseline All-O/POS, LR, kNN, thử nghiệm dependency parser (bao gồm cả điểm cố định `C=1.0, tau=0.45` tại `outputs/fixed_point_check/`), notebook, 14 unit tests, 2 bản rà soát 63 FP đã chuẩn hóa của Vũ Thị Loan & Mai Hải Yến (`outputs/dev_run_001/baseline_ref/`), và kết quả mở khóa chấm tập `test` đúng 1 lần duy nhất (`outputs/final_test_cc1e75b079e005f0/`).
+
+👉 **Xem ngay bảng tổng hợp số liệu & nhận xét để viết Báo cáo tại:** [`TONG_HOP_KET_QUA_BAO_CAO_GROUP02.md`](TONG_HOP_KET_QUA_BAO_CAO_GROUP02.md) và [`LONG_HANDOFF.md`](LONG_HANDOFF.md).
 
 ## 1. Clone repository
 

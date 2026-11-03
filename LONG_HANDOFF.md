@@ -1,10 +1,10 @@
 # Bàn giao phần thực hiện của Long
 
-Ngày tạo: 2026-10-22T20:57:31+07:00
+Ngày tạo: 2026-11-03T13:21:06+07:00
 
 ## Trạng thái
 
-Đã sửa pipeline dữ liệu, chạy All O/POS/LR/kNN, tái tạo LR tham chiếu Week 9, hoàn thành thí nghiệm dependency, lưu model/config và kiểm tra lại dự đoán sau khi nạp model. Mã gốc không đổi. Chỉ train/dev được đọc; chưa mở/chấm test. Hai người vẫn cần thực hiện review độc lập và nhóm cần xem xét cấu hình trước đánh giá cuối.
+Đã sửa pipeline dữ liệu, chạy All O/POS/LR/kNN, tái tạo LR tham chiếu Week 9, hoàn thành thí nghiệm dependency, lưu model/config, kiểm tra lại dự đoán sau khi nạp model và chuẩn hóa/tổng hợp kết quả rà soát 63 FP của Vũ Thị Loan (TV1) và Mai Hải Yến (TV2). Mã gốc không đổi. Chỉ train/dev được đọc; chưa mở/chấm test. Nhóm cần xem xét cấu hình trước đánh giá cuối.
 
 ## Dữ liệu đã kiểm tra
 
@@ -74,13 +74,18 @@ Các nhận xét cú pháp trên là phân tích đầu ra parser trong ngữ c�
 
 kNN chọn k=10, tau=0.8; 42.493 mẫu (3.863 lỗi + 38.630 O), SVD 200 chiều, cosine, seed=0. Với k=10, tau=0.75 và 0.80 cùng yêu cầu ít nhất 8/10 láng giềng là lỗi; khác ngưỡng ghi với report nhưng cùng quyết định. Ties trong grid ưu tiên tau cao hơn. Không suy nguyên nhân kNN thấp chỉ từ điểm tổng.
 
-## Bàn giao cho Loan và Yến
+## Kết quả rà soát 63 FP của Loan và Yến
 
-- baseline_ref/fp_reference.csv: đủ 63 FP untyped, giữ câu/token/ID/probability và annotation tham chiếu.
-- baseline_ref/review_Loan.csv và review_Yen.csv: hai phiếu giống nhau, cột nhãn/lý do còn trống.
-- baseline_ref/fn_reference.csv: 233 FN untyped để chẩn đoán.
-- baseline_ref/REVIEW_GUIDE_VI.md: rubric và công thức precision đúng cho LR tham chiếu.
-- Chạy summarize_reviews.py để kiểm tra đủ ca, ghi bất đồng rồi nhập đồng thuận thủ công. Không tính precision rà soát khi phiếu chưa hoàn tất.
+- `baseline_ref/fp_reference.csv`: đủ 63 FP untyped, giữ câu/token/ID/probability và annotation tham chiếu.
+- `baseline_ref/raw_TV1_Loan.csv` và `raw_TV2_Yen.csv`: bản gốc phiếu rà soát 63 FP của Vũ Thị Loan và Mai Hải Yến (ngày 2026-10-27).
+- `baseline_ref/review_Loan.csv`, `review_Yen.csv`, `review_consensus.csv`, `review_status.json`: đã chuẩn hóa và tổng hợp bằng `summarize_reviews.py` (63/63 ca hoàn tất).
+- Thống kê 63 ca FP (`LR_reference_C3_tau065`, 30 TP + 63 FP = 93 cảnh báo):
+  - **A (báo nhầm thật):** 34 ca.
+  - **B (lỗi thật nhưng gold chưa ghi):** 14 ca — gồm **10 ca thuộc 3 nhãn mục tiêu** (`SVA`: 5, `VFORM`: 3, `NNUM`: 2), **3 ca `Khác`** ngoài phạm vi (`FP021`, `FP028`, `FP048`) và **1 ca `Chưa xác định`** (`FP049`).
+  - **C (chưa chắc / thiếu ngữ cảnh):** 15 ca.
+  - **Precision hiệu chỉnh (chỉ tính 10 ca B thuộc 3 nhãn):** `(30 + 10) / 93` = **0.430108** (cận trên giả định gộp C: `55 / 93` = 0.591398).
+  - **Precision hiệu chỉnh (tính cả 14 ca B):** `(30 + 14) / 93` = **0.473118** (cận trên giả định gộp C: `59 / 93` = 0.634409).
+  - Lưu ý phương pháp: Hai phiếu TV1 và TV2 kiểm duyệt trên cùng bản gợi ý có AI hỗ trợ; không báo cáo độ đồng thuận độc lập hay hệ số Cohen kappa giữa hai bản này.
 
 ## Cấu hình khóa và test
 
@@ -90,7 +95,7 @@ Entry point run_final_test.py đã chuẩn bị, cần đường dẫn test do n
 
 ## Kiểm tra đã thực hiện
 
-- 13 unit tests cho alignment, scoring, ngưỡng, tie rule, parser aux/chủ ngữ bên phải và chặn test.
+- 14 unit tests cho alignment, scoring, ngưỡng, tie rule, parser aux/chủ ngữ bên phải, chuẩn hóa phiếu review 63 FP và chặn test.
 - Đối chiếu độc lập các số TP/FP/FN và F0.5 từ toàn bộ CSV bằng bộ đếm Python khác scorer numpy.
 - Nạp lại ba LR đã lưu, dự đoán toàn bộ dev trùng CSV.
 - Nạp lại kNN và kiểm tra 128 vị trí trải đều dev.
@@ -107,4 +112,4 @@ Entry point run_final_test.py đã chuẩn bị, cần đường dẫn test do n
 
 ## File nên mở trước
 
-README.md để chạy; outputs/dev_run_001/metrics_dev.csv để xem điểm; parser_four_cases.csv để đọc ví dụ; baseline_ref/ để bàn giao review. Notebook EXPECT_Long_Dev.ipynb chứa các cell đã chạy để kiểm tra và trình bày kết quả lưu sẵn, có tùy chọn tái chạy pipeline dev. Việc huấn luyện thực tế được thực hiện qua CLI và lưu log, không khẳng định đã dùng một Jupyter server.
+README.md để chạy; outputs/dev_run_001/metrics_dev.csv để xem điểm; parser_four_cases.csv để đọc ví dụ; baseline_ref/ để xem kết quả review 63 FP. Notebook EXPECT_Long_Dev.ipynb chứa các cell đã chạy để kiểm tra và trình bày kết quả lưu sẵn, có tùy chọn tái chạy pipeline dev. Việc huấn luyện thực tế được thực hiện qua CLI và lưu log, không khẳng định đã dùng một Jupyter server.

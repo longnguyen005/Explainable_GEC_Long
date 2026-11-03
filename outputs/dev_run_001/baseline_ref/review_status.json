@@ -1,6 +1,33 @@
 {
   "expected_cases": 63,
-  "Loan_completed": 0,
-  "Yen_completed": 0,
-  "independent_reviews_complete": false
+  "Loan_completed": 63,
+  "Yen_completed": 63,
+  "independent_reviews_complete": true,
+  "disagreements_before_discussion": 0,
+  "consensus_complete": true,
+  "A": 34,
+  "B": 14,
+  "C": 15,
+  "B_in_scope_3_types": 10,
+  "B_out_of_scope": 4,
+  "B_by_error_type": {
+    "SVA": 5,
+    "VFORM": 3,
+    "NNUM": 2,
+    "Khác": 3,
+    "Chưa xác định": 1
+  },
+  "reference_TP": 30,
+  "reference_FP": 63,
+  "estimated_precision_in_scope_3_types": 0.43010752688172044,
+  "estimated_precision": 0.4731182795698925,
+  "assumption_upper_bound_in_scope_3_types": 0.5913978494623656,
+  "assumption_upper_bound": 0.6344086021505376,
+  "reviewers": [
+    "VŨ THỊ LOAN",
+    "MAI HẢI YẾN"
+  ],
+  "reviewed_at": "2026-10-27",
+  "methodology_note": "AI-assisted review verified by two team reviewers (TV1: VŨ THỊ LOAN, TV2: MAI HẢI YẾN). Both sheets verify the same AI-assisted draft; agreement between TV1 and TV2 is not reported as independent inter-annotator agreement or Cohen kappa.",
+  "limitation": "Internal human-verified AI-assisted review, not expert gold. In-scope precision counts only B in {SVA, VFORM, NNUM} (10 cases); all-B precision includes 3 out-of-scope (Khác) and 1 undetermined-tense case. Upper bound assumes every C is a true target error; not a confidence interval."
 }

@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "started_at": "2026-11-03T13:19:00+07:00",
+  "locked_sha256": "cc1e75b079e005f0e4e14a09567d0125fcfd90f38b4d8fbe98c9197ecea711cc",
+  "completed_at": "2026-11-03T13:19:38+07:00",
+  "data": {
+    "split": "test",
+    "original_records": 2416,
+    "records": 2364,
+    "tokens": 68560,
+    "SVA": 73,
+    "VFORM": 76,
+    "NNUM": 123,
+    "unique_sources": 2364,
+    "excluded_records": 52,
+    "input_sha256": "b969451d22a918cdbed5642dcb008e8ded2badbcec127aba099af8daca7073f5",
+    "token_hash": "56488b65c4f230961b5a056328e7786da916b30550335a0cb137c34a53def65d",
+    "excluded_by_kind": {
+      "multi_token_replacement": 31,
+      "insertion": 16,
+      "deletion": 5
+    },
+    "legacy_retention_changes": []
+  },
+  "protocol": "No fitting or tuning. Models fitted on train and selected using dev."
+}
