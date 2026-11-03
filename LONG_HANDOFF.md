@@ -1,6 +1,6 @@
 # Bàn giao phần thực hiện của Long
 
-Ngày tạo: 2026-11-03T21:50:23+07:00
+Ngày tạo: 2026-11-03T22:22:14+07:00
 
 ## Trạng thái
 
@@ -93,15 +93,15 @@ kNN chọn k=10, tau=0.8; 42.493 mẫu (3.863 lỗi + 38.630 O), SVD 200 chiều
 
 - `outputs/dev_run_001/config_locked.json` giữ model, tham số và SHA-256 ở trạng thái snapshot trước khi mở `test` (`dev_selection_frozen`, `team_review_pending=true`, `test_authorized=false`). Notebook không tự chạy đánh giá `test`.
 - Entry point `run_final_test.py` đã được chạy với cờ `--authorize-test` ngày **03/11/2026** và lưu kết quả tại `outputs/final_test_cc1e75b079e005f0/` (`metrics_test.csv`, `evaluation_state.json`, `predictions_*.csv`). Trên `test` (`272` vị trí `gold`, `typed MICRO`): `LR_base` đạt `TP/FP/FN = 41/154/231, F0.5 = 0.194867`; `LR_parser` đạt `27/79/245, F0.5 = 0.193966`; `POS` đạt `31/217/241, F0.5 = 0.122627`; `kNN` đạt `14/72/258, F0.5 = 0.113636`.
-- **Lịch sử hai đợt đánh giá `test` của Nhóm 02:** Trước khi thống nhất chọn bản triển khai `Explainable_GEC_Long`, nhóm từng có một đợt chạy trên nhánh triển khai ngày **02/11/2026** (khác quy ước cắt ngưỡng khoảng cách parser `[-6, +6]` và tie-break `kNN` `tau=0.75`) và đợt chạy ngày **03/11/2026** trên bản `Explainable_GEC_Long` đã khóa. Nhóm khai báo minh bạch lịch sử hai đợt này (không tuyên bố cả nhóm chỉ mở `test` một lần) và cam kết **không dùng kết quả `test` của bất kỳ đợt nào để chọn lại hay chỉnh sửa `C`, `k`, ngưỡng `tau` hay mô hình**.
+- **Lịch sử hai đợt đánh giá `test` của Nhóm 02:** Trước khi thống nhất chọn bản triển khai `Explainable_GEC_Long`, nhóm từng có một đợt chạy trên nhánh triển khai ngày **02/11/2026** (quy ước khoảng cách chủ ngữ parser khác bản Long, ngưỡng `kNN` `tau=0.75`; không dùng làm số chính thức) và đợt chạy ngày **03/11/2026** trên bản `Explainable_GEC_Long` đã khóa. Nhóm khai báo minh bạch lịch sử hai đợt này (không tuyên bố cả nhóm chỉ mở `test` một lần) và cam kết **không dùng kết quả `test` của bất kỳ đợt nào để chọn lại hay chỉnh sửa `C`, `k`, ngưỡng `tau` hay mô hình**.
 
 ## Bảng đóng góp thực tế của từng thành viên
 
 | Thành viên | Phần việc thực tế đã thực hiện | File / Hiện vật bằng chứng |
 | --- | --- | --- |
 | Nguyễn Thành Long | Sửa lỗi alignment (`offset = len(target) + 1`), xây dựng pipeline tiền xử lý và huấn luyện 5 hệ thống (`All_O`, `POS`, `LR_base`, `LR_parser`, `kNN`), quy tắc chọn `select_lr`, tích hợp `spaCy` parser, chạy kiểm tra cùng điểm quyết định `C=1.0, tau=0.45` và can thiệp đặc trưng `FP02`, chạy `test` ngày 03/11/2026, viết unit tests và đóng gói bàn giao. | `gec/*.py`, `run_dev.py`, `run_final_test.py`, `verify_run.py`, `scripts/*.py`, `tests/*.py`, `models/*.joblib`, `outputs/`, `EXPECT_Long_Dev.ipynb` |
-| Vũ Thị Loan (TV1) | Rà soát phiếu 63 ca FP của `LR_reference_C3_tau065` (bản gốc `raw_TV1_Loan.csv`, được chọn làm phiếu chung `review_consensus.csv`), phân loại `A=34, B=14 (10 ca thuộc 3 nhãn), C=15`, ghi nhận xét từng ca và đối chiếu nội dung Mục 4 báo cáo. | `outputs/dev_run_001/baseline_ref/raw_TV1_Loan.csv`, `review_Loan.csv`, `review_consensus.csv`, `Group02_FP63_Consensus.xlsx` |
-| Mai Hải Yến (TV2) | Kiểm tra phiếu 63 ca FP (`raw_TV2_Yen.csv`, `review_Yen.csv`), đối chiếu chéo bảng số liệu báo cáo (`report_tables/`), kiểm tra tính nhất quán giữa code, đầu ra đã lưu và tài liệu báo cáo nhóm. | `outputs/dev_run_001/baseline_ref/raw_TV2_Yen.csv`, `review_Yen.csv`, `independent_comparison.csv`, `Group02_Long_Report_Pack/` |
+| Vũ Thị Loan (TV1) | Phiếu rà soát 63 ca FP của `LR_reference_C3_tau065` (bản gốc `raw_TV1_Loan.csv`, ngày ghi trên phiếu 2026-10-27), được chọn làm phiếu chung `review_consensus.csv`; phân loại `A=34, B=14 (10 ca thuộc 3 nhãn), C=15` kèm lý do từng ca. Phần việc khác do nhóm bổ sung theo thực tế. | `outputs/dev_run_001/baseline_ref/raw_TV1_Loan.csv`, `review_Loan.csv`, `review_consensus.csv`, `Group02_FP63_Consensus.xlsx` |
+| Mai Hải Yến (TV2) | Phiếu rà soát 63 ca FP (`raw_TV2_Yen.csv`, chuẩn hóa tại `review_Yen.csv`). Phần việc khác do nhóm bổ sung theo thực tế. | `outputs/dev_run_001/baseline_ref/raw_TV2_Yen.csv`, `review_Yen.csv`, `independent_comparison.csv` |
 
 ## Kiểm tra đã thực hiện
 

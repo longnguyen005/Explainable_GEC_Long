@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-11-03T21:50:35+07:00",
+  "created_at": "2026-11-03T22:22:27+07:00",
   "files": {
     "bootstrap.py": {
       "bytes": 460,
@@ -19,7 +19,7 @@
     },
     "EXPECT_Long_Dev.ipynb": {
       "bytes": 15962,
-      "sha256": "ac7362402c12af8968667d96acab917bed946d9c5e3ea5526a9ec94848aca775"
+      "sha256": "c701bff8f1a929bc1a1b0c2d9325a1e5994d2b1076418f72cfb31ff542374b96"
     },
     "gec\\__init__.py": {
       "bytes": 79,
@@ -222,8 +222,8 @@
       "sha256": "66300b71e2fab3730efa161e64cb5609f5c69e66e0d5a2cad45b7467f234dd0f"
     },
     "LONG_HANDOFF.md": {
-      "bytes": 16156,
-      "sha256": "276a3f9cb2636555c219c9d81e5c2c44c1727cdad0dab975a8acfe785c6b15c4"
+      "bytes": 16107,
+      "sha256": "4d620f09e4929f7c610e344ffde0798dad4c299bb12eff3757b85cc1a594b6d4"
     },
     "models\\knn_selected.joblib": {
       "bytes": 128182294,
@@ -439,11 +439,11 @@
     },
     "outputs\\dev_run_001\\notebook_execution.json": {
       "bytes": 1594,
-      "sha256": "270a9d7b9af5944488fe5499ab24fd9b00030f2f5789ea5bc8bc764319245e5b"
+      "sha256": "838f61fd1d9f8a101b1dd617fbffe1c63c11ca4cf3ae16113337dff474537f78"
     },
     "outputs\\dev_run_001\\original_source_check.json": {
       "bytes": 122,
-      "sha256": "c04fa0ea63a317bb4c3b2f7d2e61a621b84746f90413140a484a237011844309"
+      "sha256": "25b0f44c7c14ef4d5e2020c2dca92fc5c9abdd7e4817dea27e397518faf34af9"
     },
     "outputs\\dev_run_001\\parser_alignment.json": {
       "bytes": 1179,
@@ -499,7 +499,7 @@
     },
     "outputs\\dev_run_001\\verification.json": {
       "bytes": 1460,
-      "sha256": "d73491c3aa879b1fc370e30dd4b4fdcbc18614867b902ccd01ce802a22e2e8c8"
+      "sha256": "30e3bd8051d9dfdeb73ac28f0275c5126367b71bf344ebaedda6c8c6694ad7f4"
     },
     "outputs\\final_test_cc1e75b079e005f0\\evaluation_state.json": {
       "bytes": 855,
@@ -606,8 +606,8 @@
       "sha256": "f6cdda04410438497d2f3b54f78ae295fda5676ad3bad542e3b0ede3d81b1d82"
     },
     "scripts\\create_handoff.py": {
-      "bytes": 30553,
-      "sha256": "1bb34247e85db9642d84041b8bc780de2120e07ba62cd4fb67dd68bb35c64e39"
+      "bytes": 30504,
+      "sha256": "1a29ad52ac7acb25370134d8d4c878066665244c6f215b786b4b4ab682631f26"
     },
     "scripts\\decode_parser_fixed_point.py": {
       "bytes": 5124,
@@ -650,8 +650,8 @@
       "sha256": "f0439d93c92e5e33d28954744992430514dd4d4a9c49285766da4b0446d443ae"
     },
     "TONG_HOP_KET_QUA_BAO_CAO_GROUP02.md": {
-      "bytes": 23938,
-      "sha256": "b4a24968014dd89a7bb538ec82168ef571000c4fec09e0e1dd0dc17290c554e2"
+      "bytes": 23771,
+      "sha256": "d878d27ded26d1c337a333b36c28665c507659d04514e35a4e20314c2bc1034d"
     },
     "verify_run.py": {
       "bytes": 6958,
