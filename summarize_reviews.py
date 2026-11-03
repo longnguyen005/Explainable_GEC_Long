@@ -132,10 +132,15 @@ def main():
         reviews.append(mapping)
 
     counts = [sum(bool(r['review_label_A_B_C'].strip()) for r in review.values()) for review in reviews]
+    forms_filled = counts == [len(ids), len(ids)]
     status = {'expected_cases': len(ids), 'Loan_completed': counts[0], 'Yen_completed': counts[1],
-              'independent_reviews_complete': counts == [len(ids), len(ids)]}
+              'review_forms_filled': forms_filled,
+              'independent_reviews_complete': False,
+              'disagreements_before_discussion': None,
+              'review_method': 'shared_draft_with_TV1_selected_as_common_review',
+              'human_verification_status': 'Not inferred from completed fields or matching labels.'}
     write_json(folder / 'review_status.json', status)
-    if not status['independent_reviews_complete']:
+    if not forms_filled:
         print(status)
         print('Human reviews are incomplete; no consensus or adjusted precision is calculated.')
         return
@@ -168,7 +173,8 @@ def main():
             'prediction': left['prediction'],
             'Loan_label': a,
             'Yen_label': b,
-            'disagreed_before_discussion': not agreed,
+            'disagreed_before_discussion': None,
+            'labels_differ_in_available_sheets': not agreed,
             'Loan_reason': left['reason'],
             'Yen_reason': right['reason'],
             'suggested_error_type': err_type,
@@ -178,13 +184,14 @@ def main():
         }
         comparison_rows.append({k: base_row[k] for k in (
             'FP_ID', 'Loan_label', 'Yen_label', 'disagreed_before_discussion',
+            'labels_differ_in_available_sheets',
             'Loan_reason', 'Yen_reason', 'consensus_A_B_C', 'consensus_reason'
         )})
         consensus_rows.append(base_row)
 
     write_csv(folder / 'independent_comparison.csv', comparison_rows)
     write_csv(consensus_path, consensus_rows)
-    status['disagreements_before_discussion'] = sum(r['disagreed_before_discussion'] for r in comparison_rows)
+    status['available_sheet_label_differences'] = sum(r['labels_differ_in_available_sheets'] for r in comparison_rows)
 
     consensus = read_rows(consensus_path)
     if len(consensus) != len(ids) or {r['FP_ID'] for r in consensus} != set(ids):
@@ -214,14 +221,14 @@ def main():
             assumption_upper_bound_in_scope_3_types=(tp + b_in_scope + numbers['C']) / total_alerts if total_alerts else 0,
             assumption_upper_bound=(tp + numbers['B'] + numbers['C']) / total_alerts if total_alerts else 0,
             reviewers=['VŨ THỊ LOAN', 'MAI HẢI YẾN'],
-            reviewed_at='2026-10-27',
+            source_declared_review_dates=sorted({r.get('reviewed_at', '') for review in reviews for r in review.values() if r.get('reviewed_at')}),
             methodology_note=(
-                'AI-assisted review verified by two team reviewers (TV1: VŨ THỊ LOAN, TV2: MAI HẢI YẾN). '
-                'Both sheets verify the same AI-assisted draft; agreement between TV1 and TV2 is not '
-                'reported as independent inter-annotator agreement or Cohen kappa.'
+                'TV1 is selected as the common review. The available sheets derive from an '
+                'AI-assisted shared draft. Matching labels do not establish independent initial '
+                'annotation, pre-discussion disagreement, or expert correctness.'
             ),
             limitation=(
-                'Internal human-verified AI-assisted review, not expert gold. In-scope precision counts '
+                'Internal review labels selected from an AI-assisted draft, not expert gold; direct verification is not established by this script. In-scope precision counts '
                 'only B in {SVA, VFORM, NNUM} (10 cases); all-B precision includes 3 out-of-scope (Khác) '
                 'and 1 undetermined-tense case. Upper bound assumes every C is a true target error; '
                 'not a confidence interval.'
@@ -230,9 +237,12 @@ def main():
         manifest_path = folder / 'review_manifest.json'
         if manifest_path.exists():
             manifest_data = read_json(manifest_path)
-            manifest_data['human_labels_completed'] = True
+            manifest_data['review_fields_filled'] = True
+            manifest_data['independent_reviews_complete'] = False
+            manifest_data['human_labels_completed'] = None
             manifest_data['reviewers'] = ['VŨ THỊ LOAN', 'MAI HẢI YẾN']
-            manifest_data['reviewed_at'] = '2026-10-27'
+            manifest_data.pop('reviewed_at', None)
+            manifest_data['source_declared_review_dates'] = status['source_declared_review_dates']
             write_json(manifest_path, manifest_data)
     write_json(folder / 'review_status.json', status)
     print(status)

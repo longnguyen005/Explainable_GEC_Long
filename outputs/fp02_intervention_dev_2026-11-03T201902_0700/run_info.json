@@ -1,0 +1,29 @@
+{
+  "run_at": "2026-11-03T20:19:02+07:00",
+  "record_id": "dev:001408",
+  "token_index": 3,
+  "C": 1.0,
+  "tau": 0.45,
+  "fitted_model": "models\\lr_parser_C1.0_e0148c2ee98e1443.joblib",
+  "model_sha256": "3a000e9c89c504f7b8120cd0b38586cfd57b7ee8350fdd901821330012050485",
+  "dev_sha256": "98674e5f9cd731925f448aec5a2c7c60f7824daa18139de3be6d8b394717a752",
+  "parser_metadata": {
+    "spacy": "3.8.14",
+    "model": "en_core_web_sm",
+    "model_version": "3.8.0",
+    "tokens": "18887e6b1e83217cf0b47a19af1e7bbd777ce8069accf1f924e61429684aefc8",
+    "algorithm": "v1: direct subject; auxiliary inherits lexical head subject; exact signed distance",
+    "pipeline": [
+      "tok2vec",
+      "tagger",
+      "parser",
+      "attribute_ruler"
+    ],
+    "tokenization": "Doc(words=EXPECT tokens, spaces=True except final token)"
+  },
+  "training_performed": false,
+  "tuning_performed": false,
+  "test_opened": false,
+  "manual_profiles": "people: NNS/Plur/dist -2; today: NN/Sing/dist -1. Declared hypothetical feature interventions, not expert parser labels.",
+  "interpretation": "One fixed fitted model and threshold. A single-token illustration, not a causal estimate of full-dataset performance."
+}

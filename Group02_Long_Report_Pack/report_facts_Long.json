@@ -1,0 +1,312 @@
+{
+  "implementation": "Long",
+  "selected_config": {
+    "LR_base": {
+      "parameters": {
+        "system": "LR_base",
+        "C": 1.0,
+        "tau": 0.45,
+        "TP": 38,
+        "FP": 112,
+        "FN": 225,
+        "P": 0.25333333333333335,
+        "R": 0.1444866920152091,
+        "F1": 0.18401937046004843,
+        "F0.5": 0.220162224797219,
+        "n_iter": 53,
+        "converged": true,
+        "fit_seconds": 11.453053400000499,
+        "feature_count": 126797
+      },
+      "per_C_best": [
+        {
+          "system": "LR_base",
+          "C": 0.1,
+          "tau": 0.3,
+          "TP": 28,
+          "FP": 69,
+          "FN": 235,
+          "P": 0.28865979381443296,
+          "R": 0.10646387832699619,
+          "F1": 0.15555555555555556,
+          "F0.5": 0.21505376344086022,
+          "n_iter": 38,
+          "converged": true,
+          "fit_seconds": 8.090945800000554,
+          "feature_count": 126797
+        },
+        {
+          "system": "LR_base",
+          "C": 0.3,
+          "tau": 0.3,
+          "TP": 46,
+          "FP": 165,
+          "FN": 217,
+          "P": 0.21800947867298578,
+          "R": 0.17490494296577946,
+          "F1": 0.1940928270042194,
+          "F0.5": 0.20776874435411022,
+          "n_iter": 44,
+          "converged": true,
+          "fit_seconds": 10.651346200000262,
+          "feature_count": 126797
+        },
+        {
+          "system": "LR_base",
+          "C": 1.0,
+          "tau": 0.45,
+          "TP": 38,
+          "FP": 112,
+          "FN": 225,
+          "P": 0.25333333333333335,
+          "R": 0.1444866920152091,
+          "F1": 0.18401937046004843,
+          "F0.5": 0.220162224797219,
+          "n_iter": 53,
+          "converged": true,
+          "fit_seconds": 11.453053400000499,
+          "feature_count": 126797
+        },
+        {
+          "system": "LR_base",
+          "C": 3.0,
+          "tau": 0.65,
+          "TP": 28,
+          "FP": 65,
+          "FN": 235,
+          "P": 0.3010752688172043,
+          "R": 0.10646387832699619,
+          "F1": 0.15730337078651685,
+          "F0.5": 0.2204724409448819,
+          "n_iter": 51,
+          "converged": true,
+          "fit_seconds": 8.335370400000102,
+          "feature_count": 126797
+        }
+      ],
+      "bundle": "models\\lr_base_selected.joblib"
+    },
+    "LR_reference": {
+      "C": 3.0,
+      "tau": 0.65,
+      "bundle": "models\\lr_reference.joblib",
+      "FP_untyped": 63,
+      "FN_untyped": 233,
+      "report_expected_FP": 63,
+      "matches_report_FP_count": true
+    },
+    "LR_parser": {
+      "parameters": {
+        "system": "LR_parser",
+        "C": 0.1,
+        "tau": 0.35,
+        "TP": 27,
+        "FP": 55,
+        "FN": 236,
+        "P": 0.32926829268292684,
+        "R": 0.10266159695817491,
+        "F1": 0.1565217391304348,
+        "F0.5": 0.22842639593908629,
+        "n_iter": 34,
+        "converged": true,
+        "fit_seconds": 8.695860599998923,
+        "feature_count": 126847
+      },
+      "per_C_best": [
+        {
+          "system": "LR_parser",
+          "C": 0.1,
+          "tau": 0.35,
+          "TP": 27,
+          "FP": 55,
+          "FN": 236,
+          "P": 0.32926829268292684,
+          "R": 0.10266159695817491,
+          "F1": 0.1565217391304348,
+          "F0.5": 0.22842639593908629,
+          "n_iter": 34,
+          "converged": true,
+          "fit_seconds": 8.695860599998923,
+          "feature_count": 126847
+        },
+        {
+          "system": "LR_parser",
+          "C": 0.3,
+          "tau": 0.35,
+          "TP": 43,
+          "FP": 126,
+          "FN": 220,
+          "P": 0.25443786982248523,
+          "R": 0.1634980988593156,
+          "F1": 0.19907407407407407,
+          "F0.5": 0.22896698615548455,
+          "n_iter": 42,
+          "converged": true,
+          "fit_seconds": 9.670988900001248,
+          "feature_count": 126847
+        },
+        {
+          "system": "LR_parser",
+          "C": 1.0,
+          "tau": 0.6,
+          "TP": 26,
+          "FP": 53,
+          "FN": 237,
+          "P": 0.3291139240506329,
+          "R": 0.09885931558935361,
+          "F1": 0.15204678362573099,
+          "F0.5": 0.22452504317789293,
+          "n_iter": 50,
+          "converged": true,
+          "fit_seconds": 11.813654600000518,
+          "feature_count": 126847
+        },
+        {
+          "system": "LR_parser",
+          "C": 3.0,
+          "tau": 0.5,
+          "TP": 45,
+          "FP": 156,
+          "FN": 218,
+          "P": 0.22388059701492538,
+          "R": 0.17110266159695817,
+          "F1": 0.1939655172413793,
+          "F0.5": 0.21087160262417995,
+          "n_iter": 46,
+          "converged": true,
+          "fit_seconds": 10.488323900000978,
+          "feature_count": 126847
+        }
+      ],
+      "bundle": "models\\lr_parser_selected.joblib",
+      "parser_metadata": [
+        {
+          "spacy": "3.8.14",
+          "model": "en_core_web_sm",
+          "model_version": "3.8.0",
+          "tokens": "12e7e0bcc5f99e99a6be931f32ee7a72c72d08f234e207eb2d836800277a0cca",
+          "algorithm": "v1: direct subject; auxiliary inherits lexical head subject; exact signed distance",
+          "pipeline": [
+            "tok2vec",
+            "tagger",
+            "parser",
+            "attribute_ruler"
+          ],
+          "tokenization": "Doc(words=EXPECT tokens, spaces=True except final token)"
+        },
+        {
+          "spacy": "3.8.14",
+          "model": "en_core_web_sm",
+          "model_version": "3.8.0",
+          "tokens": "18887e6b1e83217cf0b47a19af1e7bbd777ce8069accf1f924e61429684aefc8",
+          "algorithm": "v1: direct subject; auxiliary inherits lexical head subject; exact signed distance",
+          "pipeline": [
+            "tok2vec",
+            "tagger",
+            "parser",
+            "attribute_ruler"
+          ],
+          "tokenization": "Doc(words=EXPECT tokens, spaces=True except final token)"
+        }
+      ]
+    },
+    "kNN": {
+      "parameters": {
+        "system": "kNN",
+        "k": 10,
+        "tau": 0.8,
+        "TP": 10,
+        "FP": 79,
+        "FN": 253,
+        "P": 0.11235955056179775,
+        "R": 0.03802281368821293,
+        "F1": 0.056818181818181816,
+        "F0.5": 0.08077544426494346,
+        "feature_count": 126797
+      },
+      "bundle": "models\\knn_selected.joblib"
+    }
+  },
+  "test_state": {
+    "status": "complete",
+    "started_at": "2026-11-03T13:19:00+07:00",
+    "locked_sha256": "cc1e75b079e005f0e4e14a09567d0125fcfd90f38b4d8fbe98c9197ecea711cc",
+    "completed_at": "2026-11-03T13:19:38+07:00",
+    "data": {
+      "split": "test",
+      "original_records": 2416,
+      "records": 2364,
+      "tokens": 68560,
+      "SVA": 73,
+      "VFORM": 76,
+      "NNUM": 123,
+      "unique_sources": 2364,
+      "excluded_records": 52,
+      "input_sha256": "b969451d22a918cdbed5642dcb008e8ded2badbcec127aba099af8daca7073f5",
+      "token_hash": "56488b65c4f230961b5a056328e7786da916b30550335a0cb137c34a53def65d",
+      "excluded_by_kind": {
+        "multi_token_replacement": 31,
+        "insertion": 16,
+        "deletion": 5
+      },
+      "legacy_retention_changes": []
+    },
+    "protocol": "No fitting or tuning. Models fitted on train and selected using dev."
+  },
+  "review": {
+    "status": "consensus_labels_selected_from_TV1",
+    "expected_cases": 63,
+    "consensus_labels_complete": true,
+    "independent_reviews_complete": false,
+    "disagreements_before_discussion": null,
+    "agreement_statistic": null,
+    "review_method": "TV1 chosen by the group as the common review; source draft had AI assistance.",
+    "human_verification_status": "Not established by this file conversion. Source worksheet contains reviewer-supplied name/date, which were not independently verified.",
+    "A": 34,
+    "B": 14,
+    "C": 15,
+    "B_in_scope_3_types": 10,
+    "B_other_or_undetermined": 4,
+    "B_by_error_type": {
+      "SVA": 5,
+      "VFORM": 3,
+      "NNUM": 2,
+      "Khác": 3,
+      "Chưa xác định": 1
+    },
+    "reference_system": "LR_reference_C3_tau065",
+    "reference_C": 3.0,
+    "reference_tau": 0.65,
+    "reference_TP_untyped": 30,
+    "reference_FP_untyped": 63,
+    "reference_FN_untyped": 233,
+    "reference_alerts": 93,
+    "scenario_precision_in_scope": 0.43010752688172044,
+    "scenario_precision_all_B": 0.4731182795698925,
+    "scenario_upper_if_all_C_in_scope": 0.5913978494623656,
+    "benchmark_gold_changed": false,
+    "benchmark_metrics_changed": false,
+    "scope_note": "Review belongs only to LR reference C3/tau0.65 on dev, not LR_base C1/tau0.45 or LR_parser.",
+    "source_workbook_name": "Group02_FP63_Review_TV1 (1)(1).xlsx",
+    "source_workbook_sha256": "b37feccac1573835a5866b28a834c5c61a9855acb85654c08b2522d952c3539c",
+    "compiled_on": "2026-11-03",
+    "source_declared_reviewer": "VŨ THỊ LOAN",
+    "source_declared_date": "2026-10-27"
+  },
+  "review_identity": {
+    "reference_rows": 63,
+    "matched_by_record_and_token": 63,
+    "token_matches": 63,
+    "source_matches": 63,
+    "label_differences_from_Long_existing_consensus": [],
+    "training_performed": false,
+    "test_evaluation_performed": false,
+    "comparison_key": [
+      "record_id",
+      "token_index"
+    ],
+    "diagnostic_case_IDs_are_separate_from_review_FP_IDs": true
+  },
+  "code_fitted_or_test_scored_in_this_pack": false,
+  "warning": "This supplement is not the complete executable submission. Full predictions/data access/model artifacts remain on the run machine."
+}

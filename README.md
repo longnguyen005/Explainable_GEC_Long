@@ -64,17 +64,22 @@ Kết quả chạy trong `outputs/dev_run_001/`:
 
 - `metrics_dev.csv`: TP/FP/FN, P/R/F1/F0.5 typed/untyped và từng loại.
 - `tuning_grid.csv`: grid đủ của hai LR và kNN.
-- `baseline_ref/`: model reference metrics, prediction, FP/FN và hai phiếu review trống.
-- `parser_four_cases.csv`: bốn trường hợp trong nhận xét instructor, trên các cấu hình đã chọn.
+- `baseline_ref/`: model reference metrics, prediction, FP/FN, hai phiếu nguồn của Vũ Thị Loan (TV1) và Mai Hải Yến (TV2), cùng phiếu chung `review_consensus.csv` và `review_status.json`.
+- `parser_four_cases.csv`: bốn trường hợp trong nhận xét instructor, trên các cấu hình đã chọn (kèm phân tích giới hạn tại `outputs/fixed_point_check/parser_limitation_cases.csv`).
 - `metrics_dev_without_duplicate.csv`: bỏ source dev trùng train, không tuning lại.
-- `config_locked.json`: cấu hình và hash model đã đóng băng từ dev; nhóm vẫn cần kiểm tra trước khi mở test.
+- `config_locked.json`: cấu hình và hash model đã đóng băng từ dev trước khi mở test.
 - `run_manifest.json`: dữ liệu, phiên bản, code hash và trạng thái từng giai đoạn.
 
-Hai phiếu Loan/Yến dành cho người đọc độc lập. Chương trình không tự điền nhãn hoặc giả định nhóm đã thống nhất.
+Kết quả kiểm tra bổ sung theo yêu cầu Tuần 10:
+- `outputs/fixed_point_check/`: kết quả `LR_parser` ở cùng điểm quyết định `C=1.0, tau=0.45` với `LR_base` (`metrics_parser_fixed_point.csv`, `predictions_LR_parser_C1.0_tau0.45.csv`, `agreement_by_subject_number_and_tag.csv`, `parser_limitation_cases.csv`).
+- `outputs/fp02_intervention_dev_2026-11-03T201902_0700/`: kết quả can thiệp đặc trưng chủ ngữ (`as_parsed`, `manual_people`, `manual_today`) tại `dev:001408` token 3 `realize` trên mô hình `LR_parser` `C=1.0, tau=0.45`.
+- `Group02_Long_Report_Pack/`: các bảng chuẩn hóa (`report_tables/`) và hướng dẫn viết báo cáo đối chiếu.
+
+Phiếu TV1 được nhóm chọn làm phiếu chung từ bản nháp có AI hỗ trợ; `review_status.json` tách bạch việc điền đủ 63 dòng (`review_forms_filled=true`) với việc đánh giá độc lập ban đầu (`independent_reviews_complete=false`, `disagreements_before_discussion=null`).
 
 ## Test cuối
 
-`run_dev.py` không có tùy chọn test và có guard cấm mở test.json/test.pkl. Test cuối là entry point riêng `run_final_test.py`; không được notebook hoặc script dev gọi tự động. Đọc hướng dẫn trước khi quyết định mở test. Không có kết quả test được tạo trong lần thực hiện hiện tại.
+`run_dev.py` không có tùy chọn test và có guard cấm mở test.json/test.pkl. Test cuối là entry point riêng `run_final_test.py`; không được notebook hoặc script dev gọi tự động. Đánh giá tập `test` cho triển khai này đã được thực hiện ngày **03/11/2026** và lưu cố định tại `outputs/final_test_cc1e75b079e005f0/` (`metrics_test.csv`, `evaluation_state.json`, `predictions_*.csv`).
 
 ## Nguồn kỹ thuật
 

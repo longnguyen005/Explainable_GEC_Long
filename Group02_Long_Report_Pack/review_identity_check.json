@@ -1,0 +1,14 @@
+{
+  "reference_rows": 63,
+  "matched_by_record_and_token": 63,
+  "token_matches": 63,
+  "source_matches": 63,
+  "label_differences_from_Long_existing_consensus": [],
+  "training_performed": false,
+  "test_evaluation_performed": false,
+  "comparison_key": [
+    "record_id",
+    "token_index"
+  ],
+  "diagnostic_case_IDs_are_separate_from_review_FP_IDs": true
+}

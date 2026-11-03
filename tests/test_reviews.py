@@ -18,7 +18,8 @@ class ReviewStandardizationTests(unittest.TestCase):
         self.assertEqual(yen[0]['reviewer'], 'MAI HẢI YẾN')
 
         status = read_json(ref_dir / 'review_status.json')
-        self.assertTrue(status['independent_reviews_complete'])
+        self.assertFalse(status['independent_reviews_complete'])
+        self.assertIsNone(status['disagreements_before_discussion'])
         self.assertTrue(status['consensus_complete'])
         self.assertEqual((status['A'], status['B'], status['C']), (34, 14, 15))
         self.assertEqual(status['B_in_scope_3_types'], 10)

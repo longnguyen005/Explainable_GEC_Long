@@ -2,8 +2,12 @@
   "expected_cases": 63,
   "Loan_completed": 63,
   "Yen_completed": 63,
-  "independent_reviews_complete": true,
-  "disagreements_before_discussion": 0,
+  "review_forms_filled": true,
+  "independent_reviews_complete": false,
+  "disagreements_before_discussion": null,
+  "review_method": "shared_draft_with_TV1_selected_as_common_review",
+  "human_verification_status": "Not inferred from completed fields or matching labels.",
+  "available_sheet_label_differences": 0,
   "consensus_complete": true,
   "A": 34,
   "B": 14,
@@ -27,7 +31,9 @@
     "VŨ THỊ LOAN",
     "MAI HẢI YẾN"
   ],
-  "reviewed_at": "2026-10-27",
-  "methodology_note": "AI-assisted review verified by two team reviewers (TV1: VŨ THỊ LOAN, TV2: MAI HẢI YẾN). Both sheets verify the same AI-assisted draft; agreement between TV1 and TV2 is not reported as independent inter-annotator agreement or Cohen kappa.",
-  "limitation": "Internal human-verified AI-assisted review, not expert gold. In-scope precision counts only B in {SVA, VFORM, NNUM} (10 cases); all-B precision includes 3 out-of-scope (Khác) and 1 undetermined-tense case. Upper bound assumes every C is a true target error; not a confidence interval."
+  "source_declared_review_dates": [
+    "2026-10-27"
+  ],
+  "methodology_note": "TV1 is selected as the common review. The available sheets derive from an AI-assisted shared draft. Matching labels do not establish independent initial annotation, pre-discussion disagreement, or expert correctness.",
+  "limitation": "Internal review labels selected from an AI-assisted draft, not expert gold; direct verification is not established by this script. In-scope precision counts only B in {SVA, VFORM, NNUM} (10 cases); all-B precision includes 3 out-of-scope (Khác) and 1 undetermined-tense case. Upper bound assumes every C is a true target error; not a confidence interval."
 }

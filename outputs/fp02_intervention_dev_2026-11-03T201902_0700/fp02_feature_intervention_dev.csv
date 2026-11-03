@@ -1,0 +1,4 @@
+﻿record_id,token_index,token,scenario,C,tau,gold,prediction,p_error,subject_tag,subject_number,subject_distance,changed_features,p_NNUM,p_O,p_SVA,p_VFORM
+dev:001408,3,realize,as_parsed,1.0,0.45,O,SVA,0.993020002023638,NNS,Plur,-2,[],0.001742876595717133,0.006979997976361974,0.9877957064806636,0.0034814189472571026
+dev:001408,3,realize,manual_people,1.0,0.45,O,SVA,0.993020002023638,NNS,Plur,-2,[],0.001742876595717133,0.006979997976361974,0.9877957064806636,0.0034814189472571026
+dev:001408,3,realize,manual_today,1.0,0.45,O,SVA,0.989730761245083,NN,Sing,-1,"[""dep_subj_distance=-1"", ""dep_subj_distance=-2"", ""dep_subj_number=Plur"", ""dep_subj_number=Sing"", ""dep_subj_pos=NN"", ""dep_subj_pos=NNS""]",0.0007731540427888601,0.010269238754917072,0.9789731934283548,0.009984413773939263

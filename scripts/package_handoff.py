@@ -13,10 +13,11 @@ def main():
     output = ROOT.parent / 'output' / 'packages'
     output.mkdir(parents=True, exist_ok=True)
     files = []
-    for directory in ('gec', 'tests', 'configs', 'scripts', 'data', 'legacy_source', 'legacy_results', 'resources', 'outputs'):
+    for directory in ('gec', 'tests', 'configs', 'scripts', 'data', 'legacy_source', 'legacy_results', 'resources', 'outputs', 'Group02_Long_Report_Pack'):
         files.extend(p for p in (ROOT / directory).rglob('*') if p.is_file()
                      and '__pycache__' not in p.parts and p.suffix != '.pyc')
-    for name in ('README.md', 'LONG_HANDOFF.md', 'EXPECT_Long_Dev.ipynb', 'SOURCE_MANIFEST.json',
+    for name in ('README.md', 'LONG_HANDOFF.md', 'TONG_HOP_KET_QUA_BAO_CAO_GROUP02.md', 'GITHUB_SETUP.md',
+                 'EXPECT_Long_Dev.ipynb', 'SOURCE_MANIFEST.json',
                  'requirements.txt', 'requirements-lock.txt', 'bootstrap.py', 'run_dev.py', 'run_dev.ps1',
                  'prepare_resources.py', 'run_final_test.py', 'verify_run.py', 'summarize_reviews.py'):
         files.append(ROOT / name)

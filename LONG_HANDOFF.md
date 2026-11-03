@@ -1,6 +1,6 @@
 # Bàn giao phần thực hiện của Long
 
-Ngày tạo: 2026-11-03T13:21:06+07:00
+Ngày tạo: 2026-11-03T20:23:56+07:00
 
 ## Trạng thái
 
@@ -89,9 +89,9 @@ kNN chọn k=10, tau=0.8; 42.493 mẫu (3.863 lỗi + 38.630 O), SVD 200 chiều
 
 ## Cấu hình khóa và test
 
-config_locked.json giữ model, tham số và SHA-256. Trạng thái dev_selection_frozen; team_review_pending=true; test_authorized=false. Đây là đóng băng kỹ thuật để tái lập, chưa phải khẳng định nhóm đã duyệt. Test không được đóng gói. Không chạy test trực tiếp từ notebook.
+config_locked.json giữ model, tham số và SHA-256. Trạng thái dev_selection_frozen; team_review_pending=true; test_authorized=false (snapshot trước khi mở test). Notebook không tự chạy đánh giá test.
 
-Entry point run_final_test.py đã chuẩn bị, cần đường dẫn test do người dùng cung cấp và cờ --authorize-test rõ ràng. Nó kiểm tra hash code/model, không fit/tuning, lưu marker một lần chạy. Chỉ dùng khi quyết định mở test đã được đưa ra. Lần thực hiện hiện tại chưa gọi đánh giá test; chỉ kiểm tra --help và loader từ chối test trong chế độ dev.
+Entry point run_final_test.py đã được chạy với cờ --authorize-test ngày 03/11/2026 và lưu kết quả tại `outputs/final_test_cc1e75b079e005f0/` (`metrics_test.csv`, `evaluation_state.json`, `predictions_*.csv`). Kết quả kiểm tra nhánh parser ở cùng điểm quyết định `C=1.0, tau=0.45` lưu tại `outputs/fixed_point_check/` và thí nghiệm can thiệp đặc trưng chủ ngữ tại `FP02` lưu tại `outputs/fp02_intervention_dev_2026-11-03T201902_0700/`.
 
 ## Kiểm tra đã thực hiện
 
@@ -107,9 +107,9 @@ Entry point run_final_test.py đã chuẩn bị, cần đường dẫn test do n
 1. Đầu vào chỉ source, đầu ra là nhãn token; khác evidence extraction của mã gốc.
 2. LR nền học đặc trưng cục bộ; nearest noun không luôn là chủ ngữ.
 3. Parser cung cấp ba đặc trưng với token alignment được kiểm tra.
-4. SVA precision tăng nhưng recall chưa tăng; có cả hồi quy ở FN04.
-5. Nhóm khóa tham số bằng dev và giữ test cho đánh giá cuối.
+4. Ở cùng `C=1.0, tau=0.45`, parser giữ TP SVA = 11 và FP SVA = 41; ở cấu hình được chọn `C=0.1, tau=0.35`, SVA precision tăng nhờ giảm FP (41 xuống 16) và giữ TP = 12, có hồi quy ở FN04.
+5. Nhóm khóa tham số bằng dev và đã chấm test ngày 03/11/2026 tại `outputs/final_test_cc1e75b079e005f0/`.
 
 ## File nên mở trước
 
-README.md để chạy; outputs/dev_run_001/metrics_dev.csv để xem điểm; parser_four_cases.csv để đọc ví dụ; baseline_ref/ để xem kết quả review 63 FP. Notebook EXPECT_Long_Dev.ipynb chứa các cell đã chạy để kiểm tra và trình bày kết quả lưu sẵn, có tùy chọn tái chạy pipeline dev. Việc huấn luyện thực tế được thực hiện qua CLI và lưu log, không khẳng định đã dùng một Jupyter server.
+README.md để chạy; `TONG_HOP_KET_QUA_BAO_CAO_GROUP02.md` và `Group02_Long_Report_Pack/HUONG_DAN_VIET_BAO_CAO_LONG.md` để lấy bảng viết báo cáo; `outputs/dev_run_001/metrics_dev.csv` và `outputs/final_test_cc1e75b079e005f0/metrics_test.csv` để xem điểm; `parser_four_cases.csv` và `outputs/fixed_point_check/parser_limitation_cases.csv` để đọc ví dụ; `baseline_ref/` để xem kết quả review 63 FP. Notebook EXPECT_Long_Dev.ipynb chứa các cell đã chạy để kiểm tra và trình bày kết quả lưu sẵn (kèm trace mẫu `dev:001408` token 3 `realize`).
